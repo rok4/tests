@@ -1,0 +1,37 @@
+version: "3"
+services:
+
+  pregeneration:
+    build: 
+      context: .
+      dockerfile: pregeneration.Dockerfile
+    image: rok4/pregeneration-tests
+    environment:
+      - RUN_BE4=${RUN_BE4}
+      - RUN_4ALAMO=${RUN_4ALAMO}
+    volumes:
+      - $PWD/data:/data
+      - $PWD/confs:/confs
+      - common:/common
+      - scripts:/scripts
+      - pyramids:/pyramids
+
+  generation:
+    build: 
+      context: .
+      dockerfile: generation.Dockerfile
+    image: rok4/generation-tests
+    environment:
+      - RUN_BE4=${RUN_BE4}
+      - RUN_4ALAMO=${RUN_4ALAMO}
+    volumes:
+      - $PWD/data:/data
+      - $PWD/confs:/confs
+      - common:/common
+      - scripts:/scripts
+      - pyramids:/pyramids
+
+volumes:
+  common:
+  scripts:
+  pyramids:

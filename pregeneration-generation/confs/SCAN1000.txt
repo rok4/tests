@@ -1,0 +1,3 @@
+[ <AUTO> ]
+srs = IGNF:LAMB93
+path_image = /data/SCAN1000/

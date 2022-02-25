@@ -1,0 +1,17 @@
+{
+  "name": "rok4server-tests",
+  "version": "1.0.0",
+  "description": "Functionnal tests for ROK4 server, covering WMS, WMTS, TMS and admin APIs",
+  "main": "main.js",
+  "scripts": {
+    "test": "mocha --timeout 10000"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chai": "^4.3.4",
+    "chai-http": "^4.3.0",
+    "mocha": "^9.1.3",
+    "supertest": "^6.1.6"
+  }
+}

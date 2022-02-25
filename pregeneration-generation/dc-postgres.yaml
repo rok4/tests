@@ -1,0 +1,16 @@
+version: "3"
+services:
+
+  bdd:
+    image: postgis/postgis:12-3.0-alpine
+    volumes:
+      - ./data/limadm.sql:/docker-entrypoint-initdb.d/limadm.sql:ro
+    environment:
+      - POSTGRES_DB=ign
+      - POSTGRES_USER=ign
+      - POSTGRES_PASSWORD=ign
+
+volumes:
+  common:
+  scripts:
+  pyramids:
