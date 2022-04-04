@@ -1,0 +1,39 @@
+{
+    "datasources": [
+        {
+            "top": "0",
+            "bottom": "<AUTO>",
+            "source": {
+                "type": "IMAGES",
+                "directory": "/data/BDPARCELLAIRE/",
+                "srs": "IGNF:LAMB93"
+            }
+        }
+    ],
+    "pyramid": {
+        "type": "GENERATION",
+        "name": "BDPARCELLAIRE",
+        "tms": "4326.json",
+        "storage": {
+            "type": "FILE",
+            "root": "/pyramids"
+        },
+        "nodata": [
+            255
+        ],
+        "compression": "png",
+        "interpolation": "nn",
+        "slab_size": [
+            2,
+            2
+        ]
+    },
+    "process": {
+        "directories": {
+            "scripts": "/scripts/BDPARCELLAIRE",
+            "local_tmp": "/temp/BDPARCELLAIRE",
+            "shared_tmp": "/common/BDPARCELLAIRE"
+        },
+        "parallelization": 1
+    }
+}
