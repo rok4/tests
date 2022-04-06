@@ -5,16 +5,14 @@ services:
     image: rok4/server:${TAG}
     volumes:
       - ./pyramids.tar:/pyramids.tar:ro
-    command: >
-      bash -c "tar -x -f /pyramids.tar --directory /pyramids/
-      && /bin/rok4 -f /etc/rok4/config/server.json"
+    command: bash -c "tar -x -f /pyramids.tar --directory /pyramids/ && /bin/rok4 -f /etc/rok4/config/server.json"
 
   front:
     image: nginx:alpine
     links:
       - middle
     volumes:
-      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+      - ./default.conf.template:/etc/nginx/templates/default.conf.template
     depends_on:
       - middle
 
@@ -23,3 +21,5 @@ services:
     image: rok4/server-tests
     depends_on:
       - front
+
+
