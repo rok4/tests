@@ -1,6 +1,17 @@
 version: "3"
 services:
 
+  bdd:
+    build: 
+      context: .
+      dockerfile: postgis.Dockerfile
+    image: rok4/postgis-tests
+
+    environment:
+      - POSTGRES_DB=ign
+      - POSTGRES_USER=ign
+      - POSTGRES_PASSWORD=ign
+
   pregeneration:
     build: 
       context: .
@@ -10,8 +21,6 @@ services:
       - RUN_BE4=${RUN_BE4}
       - RUN_4ALAMO=${RUN_4ALAMO}
     volumes:
-      - $PWD/data:/data
-      - $PWD/confs:/confs
       - common:/common
       - scripts:/scripts
       - pyramids:/pyramids
@@ -25,8 +34,6 @@ services:
       - RUN_BE4=${RUN_BE4}
       - RUN_4ALAMO=${RUN_4ALAMO}
     volumes:
-      - $PWD/data:/data
-      - $PWD/confs:/confs
       - common:/common
       - scripts:/scripts
       - pyramids:/pyramids

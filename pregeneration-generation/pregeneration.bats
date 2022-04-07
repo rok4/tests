@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
 setup_file() {    
-    if [ ! -z $RUN_4ALAMO ]; then sleep 10; fi
+    # Attente du lancement terminé de PostGIS
+    sleep 10
     
     load 'test_helper/bats-support/load'
     load 'test_helper/bats-assert/load'
@@ -14,35 +15,25 @@ setup_file() {
 
 @test "LIMADM PM" {
 
-    if [ -z $RUN_4ALAMO ]; then skip "4ALAMO tests not enabled"; fi
-
     run -0 4alamo.pl --conf /confs/4alamo-limadm.json
 }
 
 @test "BDPARCELLAIRE PNG 4326" {
-
-    if [ -z $RUN_BE4 ]; then skip "BE4 tests not enabled"; fi
 
     run -0 be4.pl --conf /confs/be4-parcellaire.json
 }
 
 @test "RGEALTI ZIP LAMB93_1M_MNT" {
 
-    if [ -z $RUN_BE4 ]; then skip "BE4 tests not enabled"; fi
-
     run -0 be4.pl --conf /confs/be4-alti.json
 }
 
 @test "RGEALTI PNG PM STYLED" {
-
-    if [ -z $RUN_BE4 ]; then skip "BE4 tests not enabled"; fi
     
     run -0 be4.pl --conf /confs/be4-alti-style.json
 }
 
 @test "SCAN1000 PNG PM ADD ALPHA" {
-
-    if [ -z $RUN_BE4 ]; then skip "BE4 tests not enabled"; fi
     
     run -0 be4.pl --conf /confs/be4-scan1000.json
 }

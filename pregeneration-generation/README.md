@@ -2,7 +2,7 @@
 
 ## Compilation des images de test
 
-`docker-compose -f dc-pregen-gen.yaml build --build-arg TAG=<VERSION>`
+`docker-compose build --build-arg TAG=<VERSION>`
 
 
 ## Architecture de tests
@@ -24,15 +24,13 @@
 
 ## Exécution des tests
 
-Pour lancer uniquement les tests sur BE4 : `RUN_BE4=1 docker-compose -f dc-pregen-gen.yaml up --abort-on-container-exit`
-Pour lancer uniquement les tests sur 4ALAMO : `RUN_4ALAMO=1 docker-compose -f dc-pregen-gen.yaml -f dc-postgres.yaml up --abort-on-container-exit`
-Pour lancer tous les tests : `RUN_BE4=1 RUN_4ALAMO=1 docker-compose -f dc-pregen-gen.yaml -f dc-postgres.yaml up --abort-on-container-exit`
+Pour lancer les tests : `docker-compose up --abort-on-container-exit`
 
 Le statut de la commande est alors celui du conteneur de test. 0 si tous les tests se sont bien déroulés, un autre code sinon.
 
 ## Nettoyage
 
 ```
-docker-compose -f dc-pregen-gen.yaml -f dc-postgres.yaml down
-docker volume rm full-generation-tests_common full-generation-tests_scripts full-generation-tests_pyramids
+docker-compose down
+docker volume rm pregeneration-generation_common pregeneration-generation_scripts pregeneration-generation_pyramids
 ```

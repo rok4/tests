@@ -10,6 +10,8 @@ RUN apt -y install git && git init && git submodule add https://github.com/bats-
     && git submodule add https://github.com/bats-core/bats-assert.git test_helper/bats-assert \
     && git submodule add https://github.com/bats-core/bats-file.git test_helper/bats-file
 
+COPY confs/ /confs
+COPY data/ /data
 COPY generation.bats /tests/generation.bats
 
 CMD ["./bats/bin/bats", "-T", "--print-output-on-failure", "."]
