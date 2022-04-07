@@ -17,9 +17,6 @@ services:
       context: .
       dockerfile: pregeneration.Dockerfile
     image: rok4/pregeneration-tests
-    environment:
-      - RUN_BE4=${RUN_BE4}
-      - RUN_4ALAMO=${RUN_4ALAMO}
     volumes:
       - common:/common
       - scripts:/scripts
@@ -30,9 +27,6 @@ services:
       context: .
       dockerfile: generation.Dockerfile
     image: rok4/generation-tests
-    environment:
-      - RUN_BE4=${RUN_BE4}
-      - RUN_4ALAMO=${RUN_4ALAMO}
     volumes:
       - common:/common
       - scripts:/scripts
