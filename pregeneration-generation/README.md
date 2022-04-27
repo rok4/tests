@@ -19,7 +19,8 @@
   * MONTAGNE : application d'un style de pente sur des données MNT, reprojection LAMB93 -> Web Mercator, compression PNG
   * SCAN1000 : ajout d'un canal alpha, reprojection LAMB93 -> Web Mercator, compression PNG
 * Outil 4ALAMO
-  * LIMADM : reprojection UTM20N -> Web Mercator, 2 compositions
+  * LIMADM : source PostgreSQL, reprojection UTM20N -> Web Mercator, 2 compositions
+  * STATES : source fichier GeoJSON, 1 composition
 
 
 ## Exécution des tests

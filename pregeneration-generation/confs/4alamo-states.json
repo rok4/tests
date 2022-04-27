@@ -1,0 +1,34 @@
+{
+   "datasources": [
+      {
+         "top": "0",
+         "bottom": "6",
+         "source": {
+            "type": "VECTORS",
+            "srs": "EPSG:3857",
+            "directory": "/data/STATES"
+         }
+      }
+   ],
+   "pyramid": {
+      "type": "GENERATION",
+      "name": "STATES",
+      "tms": "PM.json",
+      "storage": {
+         "type": "FILE",
+         "root": "/pyramids"
+      },
+      "slab_size": [
+         4,
+         4
+      ]
+   },
+   "process": {
+      "directories": {
+         "scripts": "/scripts/STATES",
+         "local_tmp": "/temp/STATES",
+         "shared_tmp": "/common/STATES"
+      },
+      "parallelization": 1
+   }
+}
