@@ -1,6 +1,6 @@
-ARG TAG
+ARG GENERATION_TAG
 
-FROM rok4/generation:${TAG}
+FROM rok4/generation:${GENERATION_TAG}
 
 RUN mkdir /tests
 WORKDIR /tests

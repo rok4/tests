@@ -1,6 +1,6 @@
-ARG TAG
+ARG PREGENERATION_TAG
 
-FROM rok4/pregeneration:${TAG}
+FROM rok4/pregeneration:${PREGENERATION_TAG}
 
 RUN mkdir /tests
 WORKDIR /tests
