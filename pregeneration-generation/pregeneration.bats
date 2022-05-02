@@ -13,6 +13,11 @@ setup_file() {
     echo "Testing PREGENERATION" >&3
 }
 
+@test "STATES PM" {
+
+    run -0 4alamo.pl --conf /confs/4alamo-states.json
+}
+
 @test "LIMADM PM" {
 
     run -0 4alamo.pl --conf /confs/4alamo-limadm.json
