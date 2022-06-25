@@ -10,9 +10,11 @@ setup_file() {
 }
 
 @test "Valid image" {
+    bats_require_minimum_version 1.5.0
     run -0 checkWork /inputs/checkWork/SOURCE.tif
 }
 
 @test "Invalid image" {
+    bats_require_minimum_version 1.5.0
     run -255 checkWork /inputs/checkWork/SLAB.tif
 }

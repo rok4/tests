@@ -10,14 +10,17 @@ setup_file() {
 }
 
 @test "Fail because of different dimension" {
+    bats_require_minimum_version 1.5.0
     run -255 composeNtiff -c jpg -s /inputs/composeNtiff/nok/ -g 2 2 /tmp/test_nok_differentdimension.tif
 }
 
 @test "Fail because of wrong grid size" {
+    bats_require_minimum_version 1.5.0
     run -255 composeNtiff -c jpg -s /inputs/composeNtiff/ok/ -g 3 3 /tmp/test_nok_param.tif
 }
 
 @test "Succeed to compose image" {
+    bats_require_minimum_version 1.5.0
     run -0 composeNtiff -c zip -s /inputs/composeNtiff/ok/ -g 2 2 /tmp/test_ok_scan1000.tif
 }
 

@@ -10,14 +10,17 @@ setup_file() {
 }
 
 @test "Fail because of wrong compression" {
+    bats_require_minimum_version 1.5.0
     run -255 cache2work -c toto /inputs/cache2work/ORTHOHR.tif /tmp/test_nok_param.tif
 }
 
 @test "Fail when input is not a slab" {
+    bats_require_minimum_version 1.5.0
     run -1 cache2work -c zip /inputs/cache2work/NOTASLAB.tif /tmp/test_nok_notaslab.tif
 }
 
 @test "Succeed to untile a RGB image" {
+    bats_require_minimum_version 1.5.0
     run -0 cache2work -c zip /inputs/cache2work/ORTHOHR.tif /tmp/test_ok_orthohr.tif
 }
 

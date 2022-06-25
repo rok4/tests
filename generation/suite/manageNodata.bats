@@ -10,18 +10,22 @@ setup_file() {
 }
 
 @test "Fail because of wrong data new color" {
+    bats_require_minimum_version 1.5.0
     run -255 manageNodata -target 255,255,255 -touch-edges -data 254,254 /inputs/manageNodata/base.tif /tmp/test_nok_param.tif -channels 3 -format uint8
 }
 
 @test "Succeed to generate mask from image" {
+    bats_require_minimum_version 1.5.0
     run -0 manageNodata -target 255,255,255 /inputs/manageNodata/base.png -mask-out /tmp/test_ok_mask.tif -channels 3 -format uint8
 }
 
 @test "Succeed to generate mask from image spreading from edges" {
+    bats_require_minimum_version 1.5.0
     run -0 manageNodata -target 255,255,255 -touch-edges /inputs/manageNodata/base.png -mask-out /tmp/test_ok_mask_touchedges.tif -channels 3 -format uint8
 }
 
 @test "Succeed to modify data and nodata color in input image" {
+    bats_require_minimum_version 1.5.0
     run -0 manageNodata -target 255,255,255 -touch-edges -data 255,0,0 -nodata 200,200,255 /inputs/manageNodata/base.png /tmp/test_ok_data_nodata.tif -channels 3 -format uint8
 }
 

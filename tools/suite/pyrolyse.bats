@@ -10,6 +10,7 @@ setup_file() {
 }
 
 @test "With perfs" {
+    bats_require_minimum_version 1.5.0
     run -0 pyrolyse.pl --pyramid file:///pyramids/BDPARCELLAIRE.json --json /tmp/stats.json --slabs DATA --tiles DATA --perfs /tmp/perfs.txt
     wc -l /tmp/stats.json >&3
     wc -l /tmp/perfs.txt >&3

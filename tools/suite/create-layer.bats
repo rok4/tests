@@ -10,6 +10,7 @@ setup_file() {
 }
 
 @test "Raster pyramid" {
+    bats_require_minimum_version 1.5.0
     run -0 create-layer.pl --pyramid file:///pyramids/BDPARCELLAIRE.json
     echo "$output\n"
 }

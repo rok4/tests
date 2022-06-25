@@ -10,6 +10,7 @@ setup_file() {
 }
 
 @test "Full" {
+    bats_require_minimum_version 1.5.0
     ls -l /pyramids >&3
     run -0 sup-pyr.pl --pyramid file:///pyramids/SCAN1000.json --full --stop
     ls -l /pyramids >&3

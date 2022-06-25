@@ -10,10 +10,12 @@ setup_file() {
 }
 
 @test "Fail because of wrong input" {
+    bats_require_minimum_version 1.5.0
     run -255 overlayNtiff -f /inputs/overlayNtiff/conf.txt -m ALPHATOP -s 2 -c zip -p rgb -t 255,255,255 -b 255
 }
 
 @test "Succeed to reproject images into 4326" {
+    bats_require_minimum_version 1.5.0
     run -0 overlayNtiff -f /inputs/overlayNtiff/conf.txt -m ALPHATOP -s 4 -c zip -p rgb -t 255,255,255 -b 255,0,0,100
 }
 

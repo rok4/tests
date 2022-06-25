@@ -10,18 +10,22 @@ setup_file() {
 }
 
 @test "Fail because of wrong nodata colour" {
+    bats_require_minimum_version 1.5.0
     run -255 merge4tiff -c zip -n 255,255,255 -i1 /inputs/merge4tiff/01.jpg -i2 /inputs/merge4tiff/02.jpg -i3 /inputs/merge4tiff/03.jpg -m3 /inputs/merge4tiff/03.tif -a uint -b 8 -s 4 -io /tmp/test_nok_param.tif
 }
 
 @test "Succeed to merge 3 images and a background" {
+    bats_require_minimum_version 1.5.0
     run -0 merge4tiff -c zip -n 0,255,0 -i1 /inputs/merge4tiff/01.jpg -i2 /inputs/merge4tiff/02.jpg -i3 /inputs/merge4tiff/03.jpg -ib /inputs/merge4tiff/bg.tif -io /tmp/test_ok_bg.tif
 }
 
 @test "Succeed to merge 3 image and convert" {
+    bats_require_minimum_version 1.5.0
     run -0 merge4tiff -c zip -n 255,255,255,0 -i1 /inputs/merge4tiff/01.jpg -i2 /inputs/merge4tiff/02.jpg -i3 /inputs/merge4tiff/03.jpg -m3 /inputs/merge4tiff/03m.tif -a uint -b 8 -s 4 -io /tmp/test_ok_conversion.tif
 }
 
 @test "Succeed to merge 3 images and generate the mask" {
+    bats_require_minimum_version 1.5.0
     run -0 merge4tiff -c zip -n 0,255,0 -i1 /inputs/merge4tiff/01.jpg -i2 /inputs/merge4tiff/02.jpg -i3 /inputs/merge4tiff/03.jpg -m3 /inputs/merge4tiff/03m.tif -io /tmp/test_ok_mask_i.tif -mo /tmp/test_ok_mask_m.tif
 }
 
