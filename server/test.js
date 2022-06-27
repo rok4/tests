@@ -49,6 +49,12 @@ describe("TMS", () => {
     });
 });
 
+describe("Server' health check", () => {
+    describe("Get health routes", () => {
+        require('./healthcheck/gets');
+    });
+});
+
 describe("Server' cleaning", () => {
     describe("Layers' deletion", () => {
         require('./admin/delete-layers');
