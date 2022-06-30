@@ -1,0 +1,47 @@
+{
+    "datasources": [
+        {
+            "top": "0",
+            "bottom": "<AUTO>",
+            "source": {
+                "type": "IMAGES",
+                "directory": "/data/RGEALTI/",
+                "srs": "IGNF:LAMB93"
+            }
+        }
+    ],
+    "pyramid": {
+        "type": "GENERATION",
+        "name": "MONTAGNE",
+        "tms": "PM.json",
+        "storage": {
+            "type": "FILE",
+            "root": "/pyramids"
+        },
+        "nodata": [
+            0,0,0,0
+        ],
+        "pixel": {
+            "samplesperpixel": 4,
+            "sampleformat": "UINT8"
+        },
+        "compression": "png",
+        "interpolation": "nn",
+        "slab_size": [
+            2,
+            2
+        ]
+    },
+    "process": {
+        "directories": {
+            "scripts": "/scripts/MONTAGNE",
+            "local_tmp": "/temp/MONTAGNE",
+            "shared_tmp": "/common/MONTAGNE"
+        },
+        "nodata": [
+            -99999
+        ],
+        "style": "/etc/rok4/styles/montagne.json",
+        "parallelization": 1
+    }
+}

@@ -2,7 +2,7 @@
 
 ## Compilation des images de test
 
-`docker-compose build --build-arg GENERATION_TAG=<VERSION> PREGENERATION_TAG=<VERSION>`
+`docker-compose build --build-arg GENERATION_TAG=<VERSION> --build-arg PREGENERATION_TAG=<VERSION>`
 
 
 ## Architecture de tests

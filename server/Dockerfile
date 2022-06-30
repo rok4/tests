@@ -13,5 +13,6 @@ COPY admin admin
 COPY tms tms
 COPY wmts wmts
 COPY wms wms
+COPY healthcheck healthcheck
 
 CMD ["npm", "test"]
