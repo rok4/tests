@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 setup_file() {
-    echo "Testing checkWork" >&3
+    echo "Testing SUP-PYR" >&3
     load 'test_helper/bats-support/load'
     load 'test_helper/bats-assert/load'
     load 'test_helper/bats-file/load'
@@ -9,12 +9,9 @@ setup_file() {
     PATH="$DIR:$PATH"
 }
 
-@test "Valid image" {
+@test "Full" {
     bats_require_minimum_version 1.5.0
-    run -0 checkWork /inputs/checkWork/SOURCE.tif
-}
-
-@test "Invalid image" {
-    bats_require_minimum_version 1.5.0
-    run -255 checkWork /inputs/checkWork/SLAB.tif
+    ls -l /pyramids >&3
+    run -0 sup-pyr.pl --pyramid file:///pyramids/SCAN1000.json --full --stop
+    ls -l /pyramids >&3
 }

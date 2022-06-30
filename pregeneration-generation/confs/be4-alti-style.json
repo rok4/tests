@@ -41,7 +41,7 @@
         "nodata": [
             -99999
         ],
-        "style": "/styles/montagne.json",
+        "style": "/etc/rok4/styles/montagne.json",
         "parallelization": 1
     }
 }

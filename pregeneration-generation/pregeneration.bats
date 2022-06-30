@@ -15,31 +15,37 @@ setup_file() {
 
 @test "STATES PM" {
 
+    bats_require_minimum_version 1.5.0
     run -0 4alamo.pl --conf /confs/4alamo-states.json
 }
 
 @test "LIMADM PM" {
 
+    bats_require_minimum_version 1.5.0
     run -0 4alamo.pl --conf /confs/4alamo-limadm.json
 }
 
 @test "BDPARCELLAIRE PNG 4326" {
 
+    bats_require_minimum_version 1.5.0
     run -0 be4.pl --conf /confs/be4-parcellaire.json
 }
 
 @test "RGEALTI ZIP LAMB93_1M_MNT" {
 
+    bats_require_minimum_version 1.5.0
     run -0 be4.pl --conf /confs/be4-alti.json
 }
 
 @test "RGEALTI PNG PM STYLED" {
     
+    bats_require_minimum_version 1.5.0
     run -0 be4.pl --conf /confs/be4-alti-style.json
 }
 
 @test "SCAN1000 PNG PM ADD ALPHA" {
     
+    bats_require_minimum_version 1.5.0
     run -0 be4.pl --conf /confs/be4-scan1000.json
 }
 

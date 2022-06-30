@@ -1,6 +1,6 @@
-ARG PREGENERATION_TAG
+ARG TAG
 
-FROM rok4/pregeneration:${PREGENERATION_TAG}
+FROM rok4/tools:${TAG}
 
 RUN mkdir /tests
 WORKDIR /tests
@@ -10,8 +10,9 @@ RUN apt -y install git && git init && git submodule add https://github.com/bats-
     && git submodule add https://github.com/bats-core/bats-assert.git test_helper/bats-assert \
     && git submodule add https://github.com/bats-core/bats-file.git test_helper/bats-file
 
-COPY confs/ /confs
-COPY data/ /data
-COPY pregeneration.bats /tests/pregeneration.bats
+COPY inputs /inputs
+RUN mkdir /pyramids && tar -x -f /inputs/pyramids.tar --directory /pyramids/
 
-CMD ["./bats/bin/bats", "-T", "--print-output-on-failure", "."]
+COPY suite/* ./
+
+CMD ["./bats/bin/bats", "-T", "--print-output-on-failure", "--show-output-of-passing-tests", "."]

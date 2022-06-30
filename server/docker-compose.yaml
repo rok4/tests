@@ -5,7 +5,7 @@ services:
     image: rok4/server:${TAG}
     volumes:
       - ./pyramids.tar:/pyramids.tar:ro
-    command: bash -c "tar -x -f /pyramids.tar --directory /pyramids/ && /bin/rok4 -f /etc/rok4/config/server.json"
+    command: bash -c "tar -x -f /pyramids.tar --directory /pyramids/ && /bin/rok4 -f /etc/rok4/server.json"
 
   front:
     image: nginx:alpine
