@@ -31,6 +31,18 @@ describe("WMTS", () => {
     });
 });
 
+describe("OGCAPI-Tiles", () => {
+    describe("GetCapabilities", () => {
+        require('./ogcapitiles/getcapabilities');
+    });
+    describe("GetTile", () => {
+        require('./ogcapitiles/gettile');
+    });
+    describe("GetFeatureInfo", () => {
+        require('./ogcapitiles/getfeatureinfo');
+    });
+});
+
 describe("TMS", () => {
     describe("GetCapabilities", () => {
         require('./tms/getcapabilities');
