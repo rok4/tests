@@ -49,3 +49,25 @@ xit("Collection Vector", done => {
             done();
         });
 });
+
+xit("TilematrixSets", done => {
+    chai
+        .request(common.SERVER_URL)
+        .get("/ogcapitiles/tilematrixsets?f=application%2Fjson")
+        .end((err, res) => {
+            if (err) done(err)
+            res.should.have.status(200);
+            done();
+        });
+});
+
+xit("TilematrixSets by id", done => {
+    chai
+        .request(common.SERVER_URL)
+        .get("/ogcapitiles/tilematrixsets/PM?f=application%2Fjson")
+        .end((err, res) => {
+            if (err) done(err)
+            res.should.have.status(200);
+            done();
+        });
+});
