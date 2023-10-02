@@ -6,10 +6,10 @@ const should = common.should;
 
 chai.use(chaiHttp);
 
-it("Create RGEALTI layer", done => {
+it("Create TEST_ALTI layer", done => {
     chai
         .request(common.SERVER_URL)
-        .post("/admin/layers/RGEALTI")
+        .post("/admin/layers/TEST_ALTI")
         .send({
             "wms": {
                 "authorized": true,
@@ -18,20 +18,20 @@ it("Create RGEALTI layer", done => {
             "tms": {
                 "authorized": true
             },
-            "keywords": ["LAMB93_1M_MNT", "RASTER"],
+            "keywords": ["UTM20W84MART_1M_MNT", "RASTER", "MNT"],
             "wmts": {
                 "authorized": true
             },
             "pyramids": [
                 {
                     "top_level": "0",
-                    "path": "/pyramids/RGEALTI.json",
-                    "bottom_level": "8"
+                    "path": "s3://pyramids/ALTI.json",
+                    "bottom_level": "6"
                 }
             ],
-            "title": "RGEALTI",
+            "title": "TEST_ALTI",
             "resampling": "nn",
-            "abstract": "Diffusion de la donnée brute RGEALTI",
+            "abstract": "Diffusion de la donnée brute ALTI",
             "styles": ["normal", "hypso"],
             "get_feature_info": {
                 "type": "PYRAMID"
@@ -44,17 +44,17 @@ it("Create RGEALTI layer", done => {
         });
 });
 
-it("Create MONTAGNE layer", done => {
+it("Create TEST_PENTE layer", done => {
     chai
         .request(common.SERVER_URL)
-        .post("/admin/layers/MONTAGNE")
+        .post("/admin/layers/TEST_PENTE")
         .send({
-            "title": "MONTAGNE",
-            "abstract": "Diffusion de la donnée Pente depuis le RGEALTI",
+            "title": "TEST_PENTE",
+            "abstract": "Diffusion de la donnée brute PENTE",
             "wmts": {
                 "authorized": true
             },
-            "keywords": ["PM", "RASTER"],
+            "keywords": ["PM", "RASTER", "MNT"],
             "tms": {
                 "authorized": true
             },
@@ -63,9 +63,9 @@ it("Create MONTAGNE layer", done => {
             ],
             "pyramids": [
                 {
-                    "path": "/pyramids/MONTAGNE.json",
+                    "path": "s3://pyramids/PENTE.json",
                     "top_level": "0",
-                    "bottom_level": "17"
+                    "bottom_level": "13"
                 }
             ],
             "wms": {
@@ -74,9 +74,9 @@ it("Create MONTAGNE layer", done => {
             },
             "get_feature_info": {
                 "type": "EXTERNALWMS",
-                "url": "http://front/wms",
-                "layers": "RGEALTI",
-                "query_layers": "RGEALTI",
+                "url": `${common.SERVER_URL}/wms`,
+                "layers": "TEST_ALTI",
+                "query_layers": "TEST_ALTI",
                 "version": "1.3.0",
                 "service": "WMS"
             }
@@ -88,21 +88,21 @@ it("Create MONTAGNE layer", done => {
         });
 });
 
-it("Create SCAN1000 layer", done => {
+it("Create TEST_BDORTHO layer", done => {
     chai
         .request(common.SERVER_URL)
-        .post("/admin/layers/SCAN1000")
+        .post("/admin/layers/TEST_BDORTHO")
         .send({
             "wms" : {
                "authorized" : true,
                "crs" : ["EPSG:3857","CRS:84","IGNF:WGS84G","EPSG:4326"]
             },
-            "abstract" : "Diffusion de la donnée SCAN1000",
-            "title" : "SCAN1000",
+            "abstract" : "Diffusion de la donnée BDORTHO",
+            "title" : "TEST_BDORTHO",
             "pyramids" : [
                {
-                  "bottom_level" : "10",
-                  "path" : "/pyramids/SCAN1000.json",
+                  "bottom_level" : "15",
+                  "path": "s3://pyramids/BDORTHO.json",
                   "top_level" : "0"
                }
             ],
@@ -114,40 +114,6 @@ it("Create SCAN1000 layer", done => {
                "authorized" : true
             },
             "keywords" : ["PM","RASTER"]
-         })
-        .end((err, res) => {
-            if (err) done(err)
-            res.should.have.status(204);
-            done();
-        });
-});
-
-it("Create BDPARCELLAIRE layer", done => {
-    chai
-        .request(common.SERVER_URL)
-        .post("/admin/layers/BDPARCELLAIRE")
-        .send({
-            "wms" : {
-               "authorized" : true,
-               "crs" : ["EPSG:3857","CRS:84","IGNF:WGS84G","EPSG:4326"]
-            },
-            "abstract" : "Diffusion de la donnée BDPARCELLAIRE",
-            "title" : "BDPARCELLAIRE",
-            "pyramids" : [
-               {
-                  "bottom_level" : "19",
-                  "path" : "/pyramids/BDPARCELLAIRE.json",
-                  "top_level" : "0"
-               }
-            ],
-            "styles" : ["normal"],
-            "tms" : {
-               "authorized" : true
-            },
-            "wmts" : {
-               "authorized" : true
-            },
-            "keywords" : ["4326","RASTER"]
          })
         .end((err, res) => {
             if (err) done(err)

@@ -28,6 +28,10 @@ Dans ce dossier : `TAG=<VERSION> docker-compose up --abort-on-container-exit`. L
   * Demande des capacités du service
   * Demande d'une tuile
   * Demande d'informations
+* Routes API OGC Tiles
+  * Demande des capacités du service
+  * Demande d'une tuile
+  * Demande d'informations
 * Routes TMS
   * Demande des capacités du service
   * Demande d'informations sur une couche

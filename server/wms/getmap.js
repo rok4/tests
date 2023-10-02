@@ -6,10 +6,10 @@ const should = common.should;
 
 chai.use(chaiHttp);
 
-it("BDPARCELLAIRE : valid", done => {
+it("TEST_BDORTHO : valid", done => {
     chai
         .request(common.SERVER_URL)
-        .get("/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetMap&BBOX=47.65143342658590342,6.83752218069479234,47.65242181986237568,6.839816052952025771&CRS=EPSG:4326&WIDTH=1606&HEIGHT=693&LAYERS=BDPARCELLAIRE&STYLES=&FORMAT=image/png")
+        .get("/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetMap&BBOX=14.32607995411024682,-61.33514779706757025,14.96302626285481452,-60.70632904706744171&CRS=EPSG:4326&WIDTH=843&HEIGHT=854&LAYERS=TEST_BDORTHO&STYLES=&FORMAT=image/jpeg")
         .end((err, res) => {
             if (err) done(err)
             res.should.have.status(200);
@@ -17,10 +17,10 @@ it("BDPARCELLAIRE : valid", done => {
         });
 });
 
-it("BDPARCELLAIRE : valid (hypso style)", done => {
+it("TEST_ALTI : valid (hypso style)", done => {
     chai
         .request(common.SERVER_URL)
-        .get("/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetMap&BBOX=43.56102872635474199,1.439925156934160233,43.56295508717683873,1.444395872946136139&CRS=EPSG:4326&WIDTH=1606&HEIGHT=692&LAYERS=RGEALTI&STYLES=hypso&FORMAT=image/jpeg")
+        .get("/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetMap&BBOX=14.32607995411024682,-61.33514779706757025,14.96302626285481452,-60.70632904706744171&CRS=EPSG:4326&WIDTH=843&HEIGHT=854&LAYERS=TEST_ALTI&STYLES=hypso&FORMAT=image/png")
         .end((err, res) => {
             if (err) done(err)
             res.should.have.status(200);
@@ -28,10 +28,10 @@ it("BDPARCELLAIRE : valid (hypso style)", done => {
         });
 });
 
-it("MONTAGNE : wrong CRS", done => {
+it("TEST_PENTE : wrong CRS", done => {
     chai
         .request(common.SERVER_URL)
-        .get("/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetMap&BBOX=-113531097.8245597482,-73613357.30627191067,114927363.7379055321,66945578.89708346128&CRS=IGNF:LAMB93&WIDTH=1126&HEIGHT=692&LAYERS=MONTAGNE&STYLES=&FORMAT=image/png")
+        .get("/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetMap&BBOX=-113531097.8245597482,-73613357.30627191067,114927363.7379055321,66945578.89708346128&CRS=IGNF:LAMB93&WIDTH=1126&HEIGHT=692&LAYERS=TEST_PENTE&STYLES=&FORMAT=image/png")
         .end((err, res) => {
             if (err) done(err)
             res.should.have.status(400);
@@ -39,10 +39,10 @@ it("MONTAGNE : wrong CRS", done => {
         });
 });
 
-it("MONTAGNE : valid", done => {
+it("TEST_PENTE : valid", done => {
     chai
         .request(common.SERVER_URL)
-        .get("/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetMap&BBOX=43.56089802603771233,1.438977447303070534,43.56306511007949922,1.44521392982573138&CRS=EPSG:4326&WIDTH=2016&HEIGHT=700&LAYERS=MONTAGNE&STYLES=&FORMAT=image/png")
+        .get("/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetMap&BBOX=14.32607995411024682,-61.33514779706757025,14.96302626285481452,-60.70632904706744171&CRS=EPSG:4326&WIDTH=843&HEIGHT=854&LAYERS=TEST_PENTE&STYLES=&FORMAT=image/jpeg")
         .end((err, res) => {
             if (err) done(err)
             res.should.have.status(200);

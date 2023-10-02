@@ -1,7 +1,7 @@
 {
   "name": "rok4server-tests",
   "version": "1.0.0",
-  "description": "Functionnal tests for ROK4 server, covering WMS, WMTS, TMS and admin APIs",
+  "description": "Functionnal tests for ROK4 server, covering WMS, WMTS, TMS, OGC API Tiles and admin APIs",
   "main": "main.js",
   "scripts": {
     "test": "mocha --timeout 10000"

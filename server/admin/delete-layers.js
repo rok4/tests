@@ -6,10 +6,10 @@ const should = common.should;
 
 chai.use(chaiHttp);
 
-it("Create RGEALTI layer", done => {
+it("Delete TEST_ALTI layer", done => {
     chai
         .request(common.SERVER_URL)
-        .delete("/admin/layers/RGEALTI")
+        .delete("/admin/layers/TEST_ALTI")
         .end((err, res) => {
             if (err) done(err)
             res.should.have.status(204);
@@ -17,10 +17,10 @@ it("Create RGEALTI layer", done => {
         });
 });
 
-it("Create MONTAGNE layer", done => {
+it("Delete TEST_PENTE layer", done => {
     chai
         .request(common.SERVER_URL)
-        .delete("/admin/layers/MONTAGNE")
+        .delete("/admin/layers/TEST_PENTE")
         .end((err, res) => {
             if (err) done(err)
             res.should.have.status(204);
@@ -28,21 +28,10 @@ it("Create MONTAGNE layer", done => {
         });
 });
 
-it("Create SCAN1000 layer", done => {
+it("Delete TEST_BDORTHO layer", done => {
     chai
         .request(common.SERVER_URL)
-        .delete("/admin/layers/SCAN1000")
-        .end((err, res) => {
-            if (err) done(err)
-            res.should.have.status(204);
-            done();
-        });
-});
-
-it("Create BDPARCELLAIRE layer", done => {
-    chai
-        .request(common.SERVER_URL)
-        .delete("/admin/layers/BDPARCELLAIRE")
+        .delete("/admin/layers/TEST_BDORTHO")
         .end((err, res) => {
             if (err) done(err)
             res.should.have.status(204);

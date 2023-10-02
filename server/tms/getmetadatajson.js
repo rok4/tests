@@ -17,10 +17,10 @@ it("FAKE : not a layer", done => {
         });
 });
 
-it("SCAN1000 : valid", done => {
+it("TEST_BDORTHO : valid", done => {
     chai
         .request(common.SERVER_URL)
-        .get("/tms/1.0.0/SCAN1000/metadata.json")
+        .get("/tms/1.0.0/TEST_BDORTHO/metadata.json")
         .end((err, res) => {
             if (err) done(err)
             res.should.have.status(200);
@@ -28,10 +28,10 @@ it("SCAN1000 : valid", done => {
         });
 });
 
-it("RGEALTI : valid", done => {
+it("TEST_ALTI : valid", done => {
     chai
         .request(common.SERVER_URL)
-        .get("/tms/1.0.0/RGEALTI/metadata.json")
+        .get("/tms/1.0.0/TEST_ALTI/metadata.json")
         .end((err, res) => {
             if (err) done(err)
             res.should.have.status(200);
@@ -39,21 +39,10 @@ it("RGEALTI : valid", done => {
         });
 });
 
-it("BDPARCELLAIRE : valid", done => {
+it("TEST_PENTE : wrong (TMS disabled)", done => {
     chai
         .request(common.SERVER_URL)
-        .get("/tms/1.0.0/BDPARCELLAIRE/metadata.json")
-        .end((err, res) => {
-            if (err) done(err)
-            res.should.have.status(200);
-            done();
-        });
-});
-
-it("MONTAGNE : wrong (TMS disabled)", done => {
-    chai
-        .request(common.SERVER_URL)
-        .get("/tms/1.0.0/MONTAGNE/metadata.json")
+        .get("/tms/1.0.0/TEST_PENTE/metadata.json")
         .end((err, res) => {
             if (err) done(err)
             res.should.have.status(400);

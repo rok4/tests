@@ -1,11 +1,17 @@
 version: "3"
 services:
 
+  storage:
+    image: rok4/dataset:minio
+
   middle:
     image: rok4/server:${TAG}
-    volumes:
-      - ./pyramids.tar:/pyramids.tar:ro
-    command: bash -c "tar -x -f /pyramids.tar --directory /pyramids/ && /bin/rok4 -f /etc/rok4/server.json"
+    environment:
+      - ROK4_S3_SECRETKEY=rok4S3storage
+      - ROK4_S3_KEY=rok4
+      - ROK4_S3_URL=http://storage:9000
+    depends_on:
+      - storage
 
   front:
     image: nginx:alpine

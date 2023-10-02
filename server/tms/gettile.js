@@ -6,10 +6,10 @@ const should = common.should;
 
 chai.use(chaiHttp);
 
-it("SCAN1000 : no data", done => {
+it("TEST_BDORTHO : no data", done => {
     chai
         .request(common.SERVER_URL)
-        .get("/tms/1.0.0/SCAN1000/11/1038/729.png")
+        .get("/tms/1.0.0/TEST_BDORTHO/5/1038/729.png")
         .end((err, res) => {
             if (err) done(err)
             res.should.have.status(404);
@@ -17,10 +17,10 @@ it("SCAN1000 : no data", done => {
         });
 });
 
-it("SCAN1000 : valid (native TMS)", done => {
+it("TEST_BDORTHO : valid (native TMS)", done => {
     chai
         .request(common.SERVER_URL)
-        .get("/tms/1.0.0/SCAN1000/8/129/90.png")
+        .get("/tms/1.0.0/TEST_BDORTHO/12/1354/1881.jpeg")
         .end((err, res) => {
             if (err) done(err)
             res.should.have.status(200);
@@ -28,21 +28,10 @@ it("SCAN1000 : valid (native TMS)", done => {
         });
 });
 
-it("BDPARCELLAIRE : valid (native TMS)", done => {
+it("TEST_PENTE : wrong (TMS disabled)", done => {
     chai
         .request(common.SERVER_URL)
-        .get("/tms/1.0.0/BDPARCELLAIRE/18/272102/61673.png")
-        .end((err, res) => {
-            if (err) done(err)
-            res.should.have.status(200);
-            done();
-        });
-});
-
-it("MONTAGNE : wrong (TMS disabled)", done => {
-    chai
-        .request(common.SERVER_URL)
-        .get("/tms/1.0.0/MONTAGNE/16/33030/23940.png")
+        .get("/tms/1.0.0/TEST_PENTE/16/23940/33030.png")
         .end((err, res) => {
             if (err) done(err)
             res.should.have.status(400);

@@ -6,10 +6,10 @@ const should = common.should;
 
 chai.use(chaiHttp);
 
-it("Update RGEALTI layer", done => {
+it("Update TEST_ALTI layer", done => {
     chai
         .request(common.SERVER_URL)
-        .put("/admin/layers/RGEALTI")
+        .put("/admin/layers/TEST_ALTI")
         .send({
             "wms": {
                 "authorized": true,
@@ -18,20 +18,20 @@ it("Update RGEALTI layer", done => {
             "tms": {
                 "authorized": true
             },
-            "keywords": ["LAMB93_1M_MNT", "RASTER"],
+            "keywords": ["UTM20W84MART_1M_MNT", "RASTER", "MNT"],
             "wmts": {
                 "authorized": true
             },
             "pyramids": [
                 {
                     "top_level": "0",
-                    "path": "/pyramids/RGEALTI.json",
-                    "bottom_level": "8"
+                    "path": "s3://pyramids/ALTI.json",
+                    "bottom_level": "6"
                 }
             ],
-            "title": "RGEALTI modifié",
+            "title": "TEST_ALTI modifié",
             "resampling": "nn",
-            "abstract": "Diffusion de la donnée brute RGEALTI",
+            "abstract": "Diffusion de la donnée brute ALTI",
             "styles": ["normal", "hypso"],
             "get_feature_info": {
                 "type": "PYRAMID"
@@ -44,17 +44,17 @@ it("Update RGEALTI layer", done => {
         });
 });
 
-it("Update MONTAGNE layer", done => {
+it("Update TEST_PENTE layer", done => {
     chai
         .request(common.SERVER_URL)
-        .put("/admin/layers/MONTAGNE")
+        .put("/admin/layers/TEST_PENTE")
         .send({
-            "title": "MONTAGNE modifié",
-            "abstract": "Diffusion de la donnée Pente depuis le RGEALTI",
+            "title": "TEST_PENTE modifié",
+            "abstract": "Diffusion de la donnée brute PENTE",
             "wmts": {
                 "authorized": true
             },
-            "keywords": ["PM", "RASTER"],
+            "keywords": ["PM", "RASTER", "MNT"],
             "tms": {
                 "authorized": false
             },
@@ -63,9 +63,9 @@ it("Update MONTAGNE layer", done => {
             ],
             "pyramids": [
                 {
-                    "path": "/pyramids/MONTAGNE.json",
+                    "path": "s3://pyramids/PENTE.json",
                     "top_level": "0",
-                    "bottom_level": "17"
+                    "bottom_level": "13"
                 }
             ],
             "wms": {
@@ -74,9 +74,9 @@ it("Update MONTAGNE layer", done => {
             },
             "get_feature_info": {
                 "type": "EXTERNALWMS",
-                "url": "http://front/wms",
-                "layers": "RGEALTI",
-                "query_layers": "RGEALTI",
+                "url": `${common.SERVER_URL}/wms`,
+                "layers": "TEST_ALTI",
+                "query_layers": "TEST_ALTI",
                 "version": "1.3.0",
                 "service": "WMS"
             }
@@ -88,89 +88,42 @@ it("Update MONTAGNE layer", done => {
         });
 });
 
-it("Update SCAN1000 layer", done => {
+it("Update TEST_BDORTHO layer", done => {
     chai
         .request(common.SERVER_URL)
-        .put("/admin/layers/SCAN1000")
+        .put("/admin/layers/TEST_BDORTHO")
         .send({
-            "wms" : {
-               "authorized" : true,
-               "crs" : ["EPSG:3857","CRS:84","IGNF:WGS84G","EPSG:4326"]
+            "wms": {
+                "authorized": true,
+                "crs": ["EPSG:3857", "CRS:84", "IGNF:WGS84G", "EPSG:4326"]
             },
-            "abstract" : "Diffusion de la donnée SCAN1000",
-            "title" : "SCAN1000 modifié",
-            "pyramids" : [
-               {
-                  "bottom_level" : "10",
-                  "path" : "/pyramids/SCAN1000.json",
-                  "top_level" : "0"
-               }
+            "abstract": "Diffusion de la donnée BDORTHO",
+            "title": "TEST_BDORTHO modifié",
+            "pyramids": [
+                {
+                    "bottom_level": "15",
+                    "path": "s3://pyramids/BDORTHO.json",
+                    "top_level": "0"
+                }
             ],
-            "attribution": {
-                "title" : "Attribué aux tests",
-                "url": "https://github.com/rok4"
+            "styles": ["normal"],
+            "tms": {
+                "authorized": true
             },
-            "styles" : ["normal"],
-            "tms" : {
-               "authorized" : true
+            "wmts": {
+                "authorized": true,
+                "tms": ["4326"]
             },
-            "bbox" : {
-                "east": 1.9756,
-                "west": 1.6989,
-                "north": 46.3259,
-                "south": 46.1275
-            },
-            "wmts" : {
-               "authorized" : true,
-               "tms": ["4326"]
-            },
-            "keywords" : ["PM","RASTER"],
-            "get_feature_info": {
-                "type": "PYRAMID"
-            }
-         })
-        .end((err, res) => {
-            if (err) done(err)
-            res.should.have.status(204);
-            done();
-        });
-});
-
-it("Update BDPARCELLAIRE layer", done => {
-    chai
-        .request(common.SERVER_URL)
-        .put("/admin/layers/BDPARCELLAIRE")
-        .send({
-            "wms" : {
-               "authorized" : true,
-               "crs" : ["EPSG:3857","CRS:84","IGNF:WGS84G","EPSG:4326"]
-            },
-            "abstract" : "Diffusion de la donnée BDPARCELLAIRE",
-            "title" : "BDPARCELLAIRE modifié",
-            "pyramids" : [
-               {
-                  "bottom_level" : "19",
-                  "path" : "/pyramids/BDPARCELLAIRE.json",
-                  "top_level" : "0"
-               }
-            ],
-            "styles" : ["normal", "orange"],
-            "tms" : {
-               "authorized" : true
-            },
-            "wmts" : {
-               "authorized" : true
-            },
-            "keywords" : ["4326","RASTER"],
+            "keywords": ["PM", "RASTER"],
             "get_feature_info": {
                 "type": "EXTERNALWMS",
-                "url": "http://fake/wms",
-                "layers": "WRONG",
-                "query_layers": "WRONG_AGAIN",
+                "url": `http://fake/wms`,
+                "layers": "FAKE",
+                "query_layers": "FAKE",
                 "version": "1.3.0",
                 "service": "WMS"
             }
-         })
+        })
         .end((err, res) => {
             if (err) done(err)
             res.should.have.status(204);
