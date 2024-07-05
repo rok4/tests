@@ -13,7 +13,7 @@ COPY admin admin
 COPY tms tms
 COPY wmts wmts
 COPY wms wms
-COPY ogcapitiles ogcapitiles
+COPY tiles tiles
 COPY healthcheck healthcheck
 
 CMD ["npm", "test"]

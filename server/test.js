@@ -31,15 +31,15 @@ describe("WMTS", () => {
     });
 });
 
-describe("OGCAPI-Tiles", () => {
+describe("OGC API-Tiles", () => {
     describe("GetCapabilities", () => {
-        require('./ogcapitiles/getcapabilities');
+        require('./tiles/getcapabilities');
     });
     describe("GetTile", () => {
-        require('./ogcapitiles/gettile');
+        require('./tiles/gettile');
     });
     describe("GetFeatureInfo", () => {
-        require('./ogcapitiles/getfeatureinfo');
+        require('./tiles/getfeatureinfo');
     });
 });
 

@@ -9,7 +9,7 @@ chai.use(chaiHttp);
 xit("Collections (application/json)", done => {
     chai
         .request(common.SERVER_URL)
-        .get("/ogcapitiles/collections/?f=application%2Fjson")
+        .get("/tiles/collections/?f=application%2Fjson")
         .end((err, res) => {
             if (err) done(err)
             res.should.have.status(200);
@@ -20,7 +20,7 @@ xit("Collections (application/json)", done => {
 xit("Collections (text/html)", done => {
     chai
         .request(common.SERVER_URL)
-        .get("/ogcapitiles/collections/?f=text%2Ftext")
+        .get("/tiles/collections/?f=text%2Ftext")
         .end((err, res) => {
             if (err) done(err)
             res.should.have.status(200);
@@ -31,7 +31,7 @@ xit("Collections (text/html)", done => {
 xit("Collection Raster", done => {
     chai
         .request(common.SERVER_URL)
-        .get("/ogcapitiles/collections/SCAN1000/map/tiles?f=application%2Fjson")
+        .get("/tiles/collections/SCAN1000/map/tiles?f=application%2Fjson")
         .end((err, res) => {
             if (err) done(err)
             res.should.have.status(200);
@@ -42,7 +42,7 @@ xit("Collection Raster", done => {
 xit("Collection Vector", done => {
     chai
         .request(common.SERVER_URL)
-        .get("/ogcapitiles/collections/SCAN1000/tiles?f=application%2Fjson")
+        .get("/tiles/collections/SCAN1000/tiles?f=application%2Fjson")
         .end((err, res) => {
             if (err) done(err)
             res.should.have.status(200);
@@ -53,7 +53,7 @@ xit("Collection Vector", done => {
 xit("TilematrixSets", done => {
     chai
         .request(common.SERVER_URL)
-        .get("/ogcapitiles/tilematrixsets?f=application%2Fjson")
+        .get("/tiles/tilematrixsets?f=application%2Fjson")
         .end((err, res) => {
             if (err) done(err)
             res.should.have.status(200);
@@ -64,7 +64,7 @@ xit("TilematrixSets", done => {
 xit("TilematrixSets by id", done => {
     chai
         .request(common.SERVER_URL)
-        .get("/ogcapitiles/tilematrixsets/PM?f=application%2Fjson")
+        .get("/tiles/tilematrixsets/PM?f=application%2Fjson")
         .end((err, res) => {
             if (err) done(err)
             res.should.have.status(200);
