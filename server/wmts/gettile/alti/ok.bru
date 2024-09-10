@@ -13,5 +13,6 @@ get {
 assert {
   res.status: eq 200
   res.headers["content-type"]: eq image/x-bil;bits=32
+  res.headers["content-disposition"]: eq filename="image.bil"
 }
 

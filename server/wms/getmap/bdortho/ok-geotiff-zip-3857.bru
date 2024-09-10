@@ -13,4 +13,5 @@ get {
 assert {
   res.status: eq 200
   res.headers["content-type"]: eq image/geotiff
+  res.headers["content-disposition"]: eq filename="image.tif"
 }
