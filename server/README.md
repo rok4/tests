@@ -12,29 +12,6 @@ Dans ce dossier : `TAG=<VERSION> docker-compose up --abort-on-container-exit`. L
 
 * Front NGINX
 * Middle ROK4SERVER
-* Client de test (NodeJS)
+* Data MINIO
+* Client de test [Bruno](https://www.usebruno.com/)
 
-## Contenu des tests
-
-* Routes d'administrations
-  * Création de couche
-  * Modification de couche
-  * Suppression de couche
-* Routes WMS
-  * Demande des capacités du service
-  * Demande d'une image
-  * Demande d'informations
-* Routes WMTS
-  * Demande des capacités du service
-  * Demande d'une tuile
-  * Demande d'informations
-* Routes API OGC Tiles
-  * Demande des capacités du service
-  * Demande d'une tuile
-  * Demande d'informations
-* Routes TMS
-  * Demande des capacités du service
-  * Demande d'informations sur une couche
-  * Demande de métadonnées au format JSON
-  * Demande du fichier de configuration GDAL (XML)
-  * Demande d'une tuile

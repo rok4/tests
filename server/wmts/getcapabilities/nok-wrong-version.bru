@@ -1,0 +1,17 @@
+meta {
+  name: NOK avec VERSION erronée
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{endpoint}}/wmts?REQUEST=GetCapabilities&VERSION=2.0.0&SERVICE=WMTS
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 400
+  res.headers["content-type"]: eq text/xml
+  res.body: contains exceptionCode="InvalidParameterValue"
+}

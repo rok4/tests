@@ -1,0 +1,15 @@
+meta {
+  name: Suppression de la couche 'bdortho'
+  type: http
+  seq: 2
+}
+
+delete {
+  url: {{endpoint}}/admin/layers/bdortho
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 204
+}

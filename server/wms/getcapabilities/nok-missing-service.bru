@@ -1,0 +1,17 @@
+meta {
+  name: NOK sans SERVICE
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{endpoint}}/wms?REQUEST=GetCapabilities&VERSION=1.0.0
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 400
+  res.headers["content-type"]: eq text/xml
+  res.body: contains code="MissingParameterValue"
+}

@@ -1,0 +1,53 @@
+meta {
+  name: Création de la couche 'bdparcellaire'
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{endpoint}}/admin/layers/bdparcellaire
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "title": "bdparcellaire",
+    "abstract": "bdparcellaire",
+    "keywords": ["bdparcellaire"],
+    "pyramids": [
+      {
+        "path": "s3://pyramids/BDPARCELLAIRE.json",
+        "top_level": "0",
+        "bottom_level": "18"
+      }
+    ],
+    "wms": {
+      "enabled": true
+    },
+    "wmts": {
+      "enabled": true
+    },
+    "tms": {
+      "enabled": true
+    },
+    "tiles": {
+      "enabled": true
+    },
+    "styles": [
+      "orange",
+      "blanc",
+      "normal"
+    ],
+    "get_feature_info": {
+      "type": "EXTERNALWMS",
+      "url": "https://fake.ign.fr/wms",
+      "layers": "toto",
+      "query_layers": "toto"
+    }
+  }
+}
+
+assert {
+  res.status: eq 204
+}

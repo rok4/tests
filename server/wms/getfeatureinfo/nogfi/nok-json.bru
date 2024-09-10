@@ -1,0 +1,19 @@
+meta {
+  name: NOK pas de GFI configuré
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{endpoint}}/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&BBOX=14.70227677512375841,-61.03786747840805305,14.70363344876996514,-61.03646487825526634&CRS=EPSG:4326&WIDTH=2&HEIGHT=2&LAYERS=nogfi&STYLES=&FORMAT=image/jpeg&QUERY_LAYERS=nogfi&INFO_FORMAT=application/json&I=0&J=1&FEATURE_COUNT=10
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 400
+  res.headers["content-type"]: eq text/xml
+  res.body: contains code="LayerNotQueryable"
+  res.body: contains "Layer nogfi not queryable"
+}
+

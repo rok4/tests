@@ -1,0 +1,15 @@
+meta {
+  name: Suppression de la couche 'limadm'
+  type: http
+  seq: 4
+}
+
+delete {
+  url: {{endpoint}}/admin/layers/limadm
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 204
+}

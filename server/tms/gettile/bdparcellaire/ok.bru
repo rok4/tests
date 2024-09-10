@@ -1,0 +1,16 @@
+meta {
+  name: OK
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{endpoint}}/tms/1.0.0/bdparcellaire/16/21659/30066.png
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 200
+  res.headers["content-type"]: eq image/png
+}

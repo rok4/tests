@@ -1,0 +1,17 @@
+meta {
+  name: OK avec STYLE orange
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{endpoint}}/tiles/collections/bdparcellaire/styles/blanc/map/tiles/PM_0_18/16/30066/21659?f=png
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 200
+  res.headers["content-type"]: eq image/png
+}
+

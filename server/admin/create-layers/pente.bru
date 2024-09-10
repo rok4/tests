@@ -1,0 +1,46 @@
+meta {
+  name: Création de la couche 'pente'
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{endpoint}}/admin/layers/pente
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "title": "pente",
+    "abstract": "pente",
+    "keywords": ["pente"],
+    "pyramids": [
+      {
+        "path": "s3://pyramids/PENTE.json",
+        "top_level": "0",
+        "bottom_level": "13"
+      }
+    ],
+    "wms": {
+      "enabled": true
+    },
+    "wmts": {
+      "enabled": false
+    },
+    "tms": {
+      "enabled": false
+    },
+    "tiles": {
+      "enabled": true
+    },
+    "styles": [
+      "montagne_palette",
+      "normal"
+    ]
+  }
+}
+
+assert {
+  res.status: eq 204
+}

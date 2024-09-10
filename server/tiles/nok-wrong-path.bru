@@ -1,0 +1,19 @@
+meta {
+  name: NOK route inconnue
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{endpoint}}/tiles
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 404
+  res.headers["content-type"]: eq application/json
+  res.body.type: eq ResourceNotFound
+  res.body.title: eq "Unknown tiles request path"
+  res.body.status: eq 404
+}

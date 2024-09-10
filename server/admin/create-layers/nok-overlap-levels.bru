@@ -1,0 +1,54 @@
+meta {
+  name: NOK niveaux en doublons entre les pyramides
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{endpoint}}/admin/layers/nok-overlap-levels
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "title": "nok-overlap-levels",
+    "abstract": "nok-overlap-levels",
+    "keywords": ["nok-overlap-levels"],
+    "pyramids": [
+      {
+        "path": "s3://pyramids/BDORTHO.json",
+        "top_level": "5",
+        "bottom_level": "12"
+      },
+      {
+        "path": "s3://pyramids/BDORTHO.json",
+        "top_level": "10",
+        "bottom_level": "15"
+      }
+    ],
+    "wms": {
+      "enabled": true
+    },
+    "wmts": {
+      "enabled": true
+    },
+    "tms": {
+      "enabled": true
+    },
+    "tiles": {
+      "enabled": true
+    },
+    "styles": [
+      "normal"
+    ]
+  }
+}
+
+assert {
+  res.status: eq 400
+  res.headers["content-type"]: eq application/json
+  res.body: isJson
+  res.body.error_status: eq Configuration issue
+  res.body.error_message: eq Pyramid to broadcast cannot be loaded
+}

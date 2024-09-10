@@ -1,0 +1,18 @@
+meta {
+  name: OK
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{endpoint}}/tms/1.0.0/bdparcellaire
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 200
+  res.headers["content-type"]: eq text/xml
+  res.body: contains <Title>bdparcellaire</Title>
+  res.body: contains <TileFormat width="256" height="256" mime-type="image/png" extension="png"/>
+}

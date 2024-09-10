@@ -1,0 +1,17 @@
+meta {
+  name: NOK route inconnue
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{endpoint}}/tms
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 400
+  res.headers["content-type"]: eq text/xml
+  res.body: contains "Unknown tms request path"
+}

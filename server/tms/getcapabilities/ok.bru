@@ -1,0 +1,22 @@
+meta {
+  name: OK
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{endpoint}}/tms/1.0.0
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 200
+  res.headers["content-type"]: eq text/xml
+  res.body: contains TileMap title="bdortho"
+  res.body: contains TileMap title="bdparcellaire"
+  res.body: notContains TileMap title="pente"
+  res.body: contains TileMap title="alti"
+  res.body: notContains TileMap title="OI.OrthoimageCoverage"
+  res.body: contains TileMap title="limadm"
+}

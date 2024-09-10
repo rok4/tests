@@ -1,0 +1,21 @@
+meta {
+  name: OK
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{endpoint}}/tms/1.0.0/bdortho/metadata.json
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 200
+  res.headers["content-type"]: eq application/json
+  res.body: isJson
+  res.body.minzoom: eq 0
+  res.body.maxzoom: eq 15
+  res.body.tiles: isArray
+  res.body.tiles[0]: contains /tms/1.0.0/bdortho/{z}/{x}/{y}.jpeg
+}

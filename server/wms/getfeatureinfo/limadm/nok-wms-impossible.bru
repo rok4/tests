@@ -1,0 +1,18 @@
+meta {
+  name: NOK sur une couche vecteur en WMS
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{endpoint}}/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&BBOX=-6818182.923037664965,1616796.022287987173,-6764371.25512490049,1680391.629821252078&CRS=EPSG:3857&WIDTH=691&HEIGHT=815&WIDTH=641&HEIGHT=733&LAYERS=limadm&I=128&J=128&info_format=application/json&STYLES=normal&FORMAT=image/asc
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 400
+  res.headers["content-type"]: eq text/xml
+  res.body: contains code="InvalidParameterValue"
+}
+

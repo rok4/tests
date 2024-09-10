@@ -1,0 +1,18 @@
+meta {
+  name: NOK avec STYLE erroné
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{endpoint}}/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=alti&TILEMATRIXSET=PM_0_13&TILEMATRIX=13&TILEROW=3760&TILECOL=2705&FORMAT=image/x-bil;bits=32&STYLE=toto
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 400
+  res.headers["content-type"]: eq text/xml
+  res.body: contains exceptionCode="InvalidParameterValue"
+}
+

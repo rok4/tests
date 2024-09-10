@@ -68,5 +68,4 @@ setup_file() {
 teardown_file() {
     rm -f /tmp/test_nok_notaslab.tif
     rm -f /tmp/test_nok_param.tif
-    rm -f /tmp/test_ok_orthohr.tif
 }

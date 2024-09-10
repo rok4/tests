@@ -1,0 +1,26 @@
+meta {
+  name: Récupère les dépendances
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{endpoint}}/healthcheck/depends
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 200
+  res.headers["content-type"]: eq application/json
+  res.body: isJson
+  res.body.storage: isJson
+  res.body.storage.ceph: isNumber
+  res.body.storage.ceph: eq 0
+  res.body.storage.s3: isNumber
+  res.body.storage.s3: eq 3
+  res.body.storage.file: isNumber
+  res.body.storage.file: eq 0
+  res.body.storage.swift: isNumber
+  res.body.storage.swift: eq 0
+}

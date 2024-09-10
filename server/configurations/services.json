@@ -1,0 +1,144 @@
+{
+    "provider": "IGN",
+    "site": "http://www.ign.fr",
+    "fee": "none",
+    "access_constraint": "none",
+    "contact":
+    {
+        "name": "Géoportail SAV",
+        "position": "custodian",
+        "voice": "",
+        "facsimile": "",
+        "address_type": "",
+        "delivery_point": "73 avenue de Paris",
+        "city": "Saint-Mandé",
+        "administrative_area": "",
+        "post_code": "94160",
+        "country": "France",
+        "email": "geop_services@geoportail.fr"
+    },
+    "common":
+    {
+        "enabled": true,
+        "endpoint_uri": "http://localhost/data/common",
+        "root_path": "/common",
+        "title": "Service COMMON",
+        "abstract": "Ce service permet la découvertes des services assurés par ce serveur",
+        "keywords":
+        [
+            "COMMON",
+            "Test"
+        ]
+    },
+    "admin":
+    {
+        "enabled": true
+    },
+    "health":
+    {
+        "enabled": true
+    },
+    "wms":
+    {
+        "enabled": true,
+        "endpoint_uri": "http://localhost/data/wms",
+        "root_path": "/wms",
+        "name": "WMS",
+        "title": "Service de visualisation WMS",
+        "abstract": "Ce service permet la visulation de couches de données raster IGN au travers d'un flux WMS",
+        "keywords":
+        [
+            "WMS",
+            "Test"
+        ],
+        "metadata":
+        {
+            "url": "http://metadata.ign.fr/webmapservice.xml",
+            "type": "application/vnd.iso.19139+xml",
+            "format": "application/xml"
+        },
+        "reprojection": true,
+        "formats":
+        [
+            "image/jpeg",
+            "image/png",
+            "image/tiff",
+            "image/geotiff",
+            "image/x-bil;bits=32",
+            "text/asc"
+        ],
+        "root_layer":
+        {
+            "title": "Titre racine",
+            "abstract": "Résumé racine"
+        },
+        "inspire": false,
+        "limits":
+        {
+            "width": 5000,
+            "height": 5000,
+            "layers_count": 2,
+            "tile_x": 10,
+            "tile_y": 10
+        }
+    },
+    "wmts":
+    {
+        "enabled": true,
+        "title": "Service de visualisation WMTS",
+        "abstract": "Ce service permet la visulation de couches de données raster IGN au travers d'un flux WMTS",
+        "keywords":
+        [
+            "WMTS",
+            "Test"
+        ],
+        "endpoint_uri": "http://localhost/data/wmts",
+        "root_path": "/wmts",
+        "reprojection": true,
+        "inspire": false,
+        "metadata":
+        {
+            "url": "http://metadata.ign.fr/webmaptileservice.xml",
+            "type": "application/vnd.iso.19139+xml",
+            "format": "application/xml"
+        }
+    },
+    "tms":
+    {
+        "enabled": true,
+        "endpoint_uri": "http://localhost/data/tms",
+        "root_path": "/tms",
+        "title": "Service de visualisation TMS",
+        "abstract": "Ce service permet la visulation de couches de données raster IGN au travers d'un flux TMS",
+        "keywords":
+        [
+            "TMS",
+            "Test"
+        ],
+        "metadata":
+        {
+            "url": "http://metadata.ign.fr/tilemapservice.xml",
+            "type": "application/vnd.iso.19139+xml",
+            "format": "application/xml"
+        }
+    },
+    "tiles":
+    {
+        "enabled": true,
+        "endpoint_uri": "http://localhost/data/tiles",
+        "root_path": "/tiles",
+        "title": "Service de visualisation OGC API Tiles",
+        "abstract": "Ce service permet la visulation de couches de données raster IGN au travers d'un flux OGC API Tiles",
+        "keywords":
+        [
+            "OGC API Tiles",
+            "Test"
+        ],
+        "metadata":
+        {
+            "url": "http://metadata.ign.fr/ogcapitiles.xml",
+            "type": "application/vnd.iso.19139+xml",
+            "format": "application/xml"
+        }
+    }
+}

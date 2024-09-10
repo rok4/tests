@@ -1,0 +1,17 @@
+meta {
+  name: NOK niveau erroné
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{endpoint}}/tms/1.0.0/alti/toto/2705/3760.zbil
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 400
+  res.headers["content-type"]: eq text/xml
+  res.body: contains Level toto unknown
+}

@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "Tests du serveur ROK4",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}

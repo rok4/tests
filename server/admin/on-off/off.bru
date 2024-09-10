@@ -1,0 +1,15 @@
+meta {
+  name: Désactivation des services de diffusion
+  type: http
+  seq: 1
+}
+
+put {
+  url: {{endpoint}}/admin/off
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 204
+}

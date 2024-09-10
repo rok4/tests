@@ -1,0 +1,16 @@
+meta {
+  name: OK sans format
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{endpoint}}/tiles/collections/limadm/tiles/PM_10_18/12/1879/1353
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 200
+  res.headers["content-type"]: eq application/x-protobuf
+}

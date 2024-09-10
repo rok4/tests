@@ -1,0 +1,22 @@
+meta {
+  name: OK Inspire
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{endpoint}}/wms?REQUEST=GetCapabilities&VERSION=1.3.0&SERVICE=WMS&inspire=1
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 200
+  res.headers["content-type"]: eq text/xml
+  res.body: contains <Name>OI.OrthoimageCoverage</Name>
+  res.body: notContains <Name>bdortho</Name>
+  res.body: notContains <Name>bdparcellaire</Name>
+  res.body: notContains <Name>pente</Name>
+  res.body: notContains <Name>alti</Name>
+  res.body: notContains <Name>limadm</Name>
+}

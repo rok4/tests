@@ -22,9 +22,12 @@ services:
     depends_on:
       - middle
 
-  tests:
-    build: .
-    image: rok4/server-tests
+  client:
+    image: alpine/bruno:1.26.2
+    links:
+      - front
+    volumes:
+      - ./default.conf.template:/etc/nginx/templates/default.conf.template
     depends_on:
       - front
 

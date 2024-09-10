@@ -1,0 +1,21 @@
+meta {
+  name: Récupère l'état de santé global
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{endpoint}}/healthcheck
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 200
+  res.headers["content-type"]: eq application/json
+  res.body: isJson
+  res.body.status: eq OK
+  res.body.time: isNumber 
+  res.body.pid: isNumber 
+  res.body.version: isString 
+}

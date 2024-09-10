@@ -1,0 +1,49 @@
+meta {
+  name: NOK pyramide non présente
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{endpoint}}/admin/layers/nok-wrong-pyramid
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "title": "nok-wrong-pyramid",
+    "abstract": "nok-wrong-pyramid",
+    "keywords": ["nok-wrong-pyramid"],
+    "pyramids": [
+      {
+        "path": "s3://pyramids/TOTO.json",
+        "top_level": "13",
+        "bottom_level": "15"
+      }
+    ],
+    "wms": {
+      "enabled": true
+    },
+    "wmts": {
+      "enabled": true
+    },
+    "tms": {
+      "enabled": true
+    },
+    "tiles": {
+      "enabled": true
+    },
+    "styles": [
+      "normal"
+    ]
+  }
+}
+
+assert {
+  res.status: eq 400
+  res.headers["content-type"]: eq application/json
+  res.body: isJson
+  res.body.error_status: eq Configuration issue
+  res.body.error_message: eq Pyramid s3://pyramids/TOTO.json cannot be loaded
+}

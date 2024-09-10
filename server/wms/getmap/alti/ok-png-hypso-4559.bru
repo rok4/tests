@@ -1,0 +1,16 @@
+meta {
+  name: OK (4559 + PNG + HYPSO)
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{endpoint}}/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetMap&BBOX=668251.7252410495421,1572821.529549255269,754186.4437197528314,1653562.564128074329&CRS=EPSG:4559&WIDTH=883&HEIGHT=831&LAYERS=alti&STYLES=hypso&FORMAT=image/png
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 200
+  res.headers["content-type"]: eq image/png
+}

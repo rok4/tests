@@ -1,0 +1,26 @@
+meta {
+  name: Récupère les informations sur les threads
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{endpoint}}/healthcheck/threads
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 200
+  res.headers["content-type"]: eq application/json
+  res.body: isJson
+  res.body.number: isNumber 
+  res.body.number: eq 2
+  res.body.threads: isArray
+  res.body.threads: length 2
+  res.body.threads[0].count: isNumber
+  res.body.threads[0].duration: isNumber
+  res.body.threads[0].pid: isNumber
+  res.body.threads[0].status: in RUNNING,AVAILABLE
+  res.body.threads[0].time: isNumber
+}

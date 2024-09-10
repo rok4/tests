@@ -1,0 +1,17 @@
+meta {
+  name: OK
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{endpoint}}/tms/1.0.0/alti/gdal.xml
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 200
+  res.headers["content-type"]: eq text/xml
+  res.body: contains /tms/1.0.0/alti/\${z}/\${x}/\${y}.zbil
+}
