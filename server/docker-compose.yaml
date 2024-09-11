@@ -10,6 +10,9 @@ services:
       - ROK4_S3_SECRETKEY=rok4S3storage
       - ROK4_S3_KEY=rok4
       - ROK4_S3_URL=http://storage:9000
+    volumes:
+      - ./configurations/server.json:/configurations/server.json
+      - ./configurations/services.json:/configurations/services.json
     depends_on:
       - storage
 
@@ -27,8 +30,12 @@ services:
     links:
       - front
     volumes:
-      - ./default.conf.template:/etc/nginx/templates/default.conf.template
+      - ./bruno:/apps
+      - ./results:/output
+    working_dir: /apps
     depends_on:
       - front
+    command: run -r --output /output/results.json --format json --bail --env-var "endpoint=http://front"
+    
 
 
