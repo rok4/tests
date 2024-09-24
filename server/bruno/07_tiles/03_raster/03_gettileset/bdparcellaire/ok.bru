@@ -1,0 +1,21 @@
+meta {
+  name: OK
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{endpoint}}/tiles/collections/bdparcellaire/styles/orange/map/tiles/PM?f=application/json
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 200
+  res.headers["content-type"]: eq application/json
+  res.body: isJson
+  res.body.links: isArray
+  res.body.tileMatrixSetLimits: isArray
+  res.body.tileMatrixSetLimits: length 19
+}
+

@@ -13,6 +13,7 @@ services:
     volumes:
       - ./configurations/server.json:/configurations/server.json
       - ./configurations/services.json:/configurations/services.json
+      - ./configurations/equals_crs.json:/configurations/equals_crs.json
     depends_on:
       - storage
 

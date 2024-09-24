@@ -1,0 +1,20 @@
+meta {
+  name: OK
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{endpoint}}/tiles/tileMatrixSets?f=application/json
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 200
+  res.headers["content-type"]: eq application/json
+  res.body: isJson
+  res.body.tileMatrixSets: isArray
+  res.body.tileMatrixSets: length 2
+  res.body.tileMatrixSets[0].links: isArray
+}

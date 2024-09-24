@@ -2,7 +2,7 @@
     "logger":
     {
         "output": "standard_output",
-        "level": "info",
+        "level": "error",
         "file_prefix": "/var/log/rok4",
         "file_period": 3600
     },

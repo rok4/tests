@@ -1,0 +1,20 @@
+meta {
+  name: OK
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{endpoint}}/tiles/collections/nogfi/styles/normal/map/tiles?f=application/json
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 200
+  res.headers["content-type"]: eq application/json
+  res.body: isJson
+  res.body.links: isArray
+  res.body.tilesets: isArray
+  res.body.tilesets: length 1
+}

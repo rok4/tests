@@ -3,6 +3,7 @@
     "site": "http://www.ign.fr",
     "fee": "none",
     "access_constraint": "none",
+    "crs_equivalences": "/configurations/equals_crs.json",
     "contact":
     {
         "name": "Géoportail SAV",
@@ -139,6 +140,7 @@
             "url": "http://metadata.ign.fr/ogcapitiles.xml",
             "type": "application/vnd.iso.19139+xml",
             "format": "application/xml"
-        }
+        },
+        "reprojection": true
     }
 }
