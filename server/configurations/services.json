@@ -3,7 +3,7 @@
     "site": "http://www.ign.fr",
     "fee": "none",
     "access_constraint": "none",
-    "crs_equivalences": "/configurations/equals_crs.json",
+    "crs_equivalences": "./configurations/equals_crs.json",
     "contact":
     {
         "name": "Géoportail SAV",
