@@ -1,0 +1,42 @@
+meta {
+  name: Création de la couche 'limadm'
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{endpoint}}/admin/layers/limadm
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "title": "limadm",
+    "abstract": "limadm",
+    "keywords": ["limadm"],
+    "pyramids": [
+      {
+        "path": "s3://pyramids/LIMADM.json",
+        "top_level": "10",
+        "bottom_level": "18"
+      }
+    ],
+    "wms": {
+      "enabled": true
+    },
+    "wmts": {
+      "enabled": true
+    },
+    "tms": {
+      "enabled": true
+    },
+    "tiles": {
+      "enabled": true
+    }
+  }
+}
+
+assert {
+  res.status: eq 204
+}

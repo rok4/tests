@@ -1,0 +1,17 @@
+meta {
+  name: OK avec le nom de TMS natif
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{endpoint}}/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=bdortho&TILEMATRIXSET=PM&TILEMATRIX=13&TILEROW=3760&TILECOL=2705&FORMAT=image/jpeg&STYLE=normal
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 200
+  res.headers["content-type"]: eq image/jpeg
+}
+

@@ -1,0 +1,23 @@
+meta {
+  name: OK
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{endpoint}}/wmts?REQUEST=GetCapabilities&VERSION=1.0.0&SERVICE=WMTS
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 200
+  res.headers["content-type"]: eq text/xml
+  res.body: contains <ows:Identifier>bdortho</ows:Identifier>
+  res.body: contains <ows:Identifier>nogfi</ows:Identifier>
+  res.body: contains <ows:Identifier>bdparcellaire</ows:Identifier>
+  res.body: notContains <ows:Identifier>pente</ows:Identifier>
+  res.body: contains <ows:Identifier>alti</ows:Identifier>
+  res.body: contains <ows:Identifier>OI.OrthoimageCoverage</ows:Identifier>
+  res.body: notContains <ows:Identifier>limadm</ows:Identifier>
+}

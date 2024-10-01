@@ -1,0 +1,49 @@
+meta {
+  name: Création de la couche 'OI.OrthoimageCoverage'
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{endpoint}}/admin/layers/OI.OrthoimageCoverage
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "title": "OI.OrthoimageCoverage",
+    "abstract": "OI.OrthoimageCoverage",
+    "keywords": ["OI.OrthoimageCoverage"],
+    "pyramids": [
+      {
+        "path": "s3://pyramids/BDORTHO.json",
+        "top_level": "0",
+        "bottom_level": "15"
+      }
+    ],
+    "extra_crs": ["EPSG:4326"],
+    "wms": {
+      "enabled": true
+    },
+    "wmts": {
+      "enabled": true
+    },
+    "tms": {
+      "enabled": false
+    },
+    "tiles": {
+      "enabled": true
+    },
+    "styles": [
+      "normal"
+    ],
+    "get_feature_info": {
+      "type": "PYRAMID"
+    }
+  }
+}
+
+assert {
+  res.status: eq 204
+}

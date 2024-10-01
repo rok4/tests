@@ -1,0 +1,20 @@
+meta {
+  name: OK (4326)
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{endpoint}}/tiles/tileMatrixSets/4326?f=json
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 200
+  res.headers["content-type"]: eq application/json
+  res.body: isJson
+  res.body.crs: isString
+  res.body.id: eq "4326"
+  res.body.tileMatrices: length 20
+}

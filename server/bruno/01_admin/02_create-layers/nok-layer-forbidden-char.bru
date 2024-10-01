@@ -1,0 +1,49 @@
+meta {
+  name: Création de la couche 'nogfi'
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{endpoint}}/admin/layers/toto<
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "title": "toto<",
+    "abstract": "toto<",
+    "keywords": ["toto<"],
+    "pyramids": [
+      {
+        "path": "s3://pyramids/BDORTHO.json",
+        "top_level": "13",
+        "bottom_level": "15"
+      }
+    ],
+    "wms": {
+      "enabled": true
+    },
+    "wmts": {
+      "enabled": true
+    },
+    "tms": {
+      "enabled": true
+    },
+    "tiles": {
+      "enabled": true
+    },
+    "styles": [
+      "normal"
+    ]
+  }
+}
+
+assert {
+  res.status: eq 400
+  res.headers["content-type"]: eq application/json
+  res.body: isJson
+  res.body.error_status: eq Configuration issue
+  res.body.error_message: eq Layer identifier contains forbidden chars
+}

@@ -1,4 +1,4 @@
-upstream rok4server { server middle:9000; }
+upstream rok4server { server middle:3000; }
                                                
 server {
     listen 80 default_server;

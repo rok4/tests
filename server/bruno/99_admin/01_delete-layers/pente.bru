@@ -1,0 +1,15 @@
+meta {
+  name: Suppression de la couche 'pente'
+  type: http
+  seq: 5
+}
+
+delete {
+  url: {{endpoint}}/admin/layers/pente
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 204
+}

@@ -1,0 +1,21 @@
+meta {
+  name: NOK tms erroné
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{endpoint}}/tiles/collections/bdparcellaire/styles/orange/map/tiles/4326?f=json
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 400
+  res.headers["content-type"]: eq application/json
+  res.body: isJson
+  res.body.type: eq InvalidParameter
+  res.body.title: eq Tile matrix set 4326 unknown
+  res.body.status: eq 400
+}
+

@@ -26,7 +26,7 @@ setup_file() {
 
 @test "Succeed to decimate image with conversion" {
     bats_require_minimum_version 1.5.0
-    run -0 decimateNtiff -f /inputs/decimateNtiff/ok/conf.txt -n 255 -c zip -a uint -b 8 -s 1
+    run -0 decimateNtiff -f /inputs/decimateNtiff/ok/conf.txt -n 255 -c zip -a uint8 -s 1
 }
 
 teardown_file() {

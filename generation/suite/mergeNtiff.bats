@@ -16,12 +16,12 @@ setup_file() {
 
 @test "Succeed to reproject images into 4326" {
     bats_require_minimum_version 1.5.0
-    run -0 mergeNtiff -f /inputs/mergeNtiff/conf_4326.txt -r /inputs/mergeNtiff/ -c zip -i lanczos -n 255,0 -a uint -b 8 -s 2
+    run -0 mergeNtiff -f /inputs/mergeNtiff/conf_4326.txt -r /inputs/mergeNtiff/ -c zip -i lanczos -n 255,0 -a uint8 -s 2
 }
 
 @test "Succeed to reproject and convert input images" {
     bats_require_minimum_version 1.5.0
-    run -0 mergeNtiff -f /inputs/mergeNtiff/conf_conversion.txt -c zip -i lanczos -n 255,255,255,0 -a uint -b 8 -s 4
+    run -0 mergeNtiff -f /inputs/mergeNtiff/conf_conversion.txt -c zip -i lanczos -n 255,255,255,0 -a uint8 -s 4
 }
 
 @test "Succeed to reproject images using an input mask" {

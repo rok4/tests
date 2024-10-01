@@ -1,0 +1,60 @@
+meta {
+  name: NOK couche inconnue
+  type: http
+  seq: 2
+}
+
+put {
+  url: {{endpoint}}/admin/layers/toto
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "title": "OI.OrthoimageCoverage",
+    "abstract": "OI.OrthoimageCoverage",
+    "keywords": ["OI.OrthoimageCoverage"],
+    "pyramids": [
+      {
+        "path": "s3://pyramids/BDORTHO.json",
+        "top_level": "0",
+        "bottom_level": "15"
+      }
+    ],
+    "extra_crs": ["EPSG:4326"],
+    "wms": {
+      "enabled": true
+    },
+    "wmts": {
+      "enabled": true
+    },
+    "tms": {
+      "enabled": false
+    },
+    "tiles": {
+      "enabled": true
+    },
+    "styles": [
+      "inspire"
+    ],
+    "metadata": [
+      {
+          "url": "http://metadata.ign.fr/OI.OrthoimageCoverage.xml",
+          "type": "ISO19115:2003",
+          "format": "application/xml"
+      }
+    ],
+    "get_feature_info": {
+      "type": "PYRAMID"
+    }
+  }
+}
+
+assert {
+  res.status: eq 404
+  res.headers["content-type"]: eq application/json
+  res.body: isJson
+  res.body.error_status: eq Not found
+  res.body.error_message: eq Layer toto does not exists.
+}

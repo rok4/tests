@@ -1,0 +1,15 @@
+meta {
+  name: Suppression de la couche 'bdparcellaire'
+  type: http
+  seq: 3
+}
+
+delete {
+  url: {{endpoint}}/admin/layers/bdparcellaire
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 204
+}

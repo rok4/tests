@@ -1,0 +1,18 @@
+meta {
+  name: NOK CRS avec caractère interdit (chevron)
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{endpoint}}/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&BBOX=-6796217.91428299061954021,1648667.51334653189405799,-6796015.05457823909819126,1648868.16925121564418077&CRS=EPSG:3857<&WIDTH=2&HEIGHT=2&LAYERS=bdparcellaire&STYLES=normal&FORMAT=image/jpeg&QUERY_LAYERS=bdparcellaire&INFO_FORMAT=text/html&I=0&J=1&FEATURE_COUNT=10
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 400
+  res.headers["content-type"]: eq text/xml
+  res.body: contains code="InvalidParameterValue"
+  res.body: contains "CRS unknown"
+}

@@ -1,0 +1,49 @@
+meta {
+  name: NOK nom de couche déjà présent
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{endpoint}}/admin/layers/nogfi
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "title": "nogfi",
+    "abstract": "nogfi",
+    "keywords": ["nogfi"],
+    "pyramids": [
+      {
+        "path": "s3://pyramids/BDORTHO.json",
+        "top_level": "13",
+        "bottom_level": "15"
+      }
+    ],
+    "wms": {
+      "enabled": true
+    },
+    "wmts": {
+      "enabled": true
+    },
+    "tms": {
+      "enabled": true
+    },
+    "tiles": {
+      "enabled": true
+    },
+    "styles": [
+      "normal"
+    ]
+  }
+}
+
+assert {
+  res.status: eq 409
+  res.headers["content-type"]: eq application/json
+  res.body: isJson
+  res.body.error_status: eq Configuration conflict
+  res.body.error_message: eq Layer already exists.
+}

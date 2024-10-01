@@ -1,0 +1,17 @@
+meta {
+  name: NOK ligne erronée
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{endpoint}}/tms/1.0.0/alti/13/2705/toto.zbil
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 400
+  res.headers["content-type"]: eq text/xml
+  res.body: contains Invalid row value
+}

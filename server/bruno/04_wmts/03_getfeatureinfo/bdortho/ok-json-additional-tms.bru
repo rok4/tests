@@ -1,0 +1,26 @@
+meta {
+  name: OK JSON (WMS externe)
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{endpoint}}/wmts?SERVICE=WMTS&REQUEST=GetFeatureInfo&VERSION=1.0.0&LAYER=bdortho&TILEMATRIXSET=4326_0_15&TILEMATRIX=10&TILEROW=428&TILECOL=678&I=190&J=95&FORMAT=image/x-bil;bits=32&STYLE=normal&INFOFORMAT=application/json
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 200
+  res.headers["content-type"]: eq application/json
+  res.body: isJson
+  res.body.type: eq FeatureCollection
+  res.body.features: isArray
+  res.body.features[0]: isJson
+  res.body.features[0].type: eq Feature
+  res.body.features[0].properties: isJson
+  res.body.features[0].properties.pixel: isArray
+  res.body.features[0].properties.pixel: length 1
+  res.body.features[0].properties.pixel[0]: eq "-99999.00"
+}
+

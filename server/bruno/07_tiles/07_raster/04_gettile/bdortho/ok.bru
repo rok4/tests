@@ -1,0 +1,18 @@
+meta {
+  name: OK
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{endpoint}}/tiles/collections/bdortho/styles/normal/map/tiles/PM_0_15/13/3760/2705?f=jpg
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 200
+  res.headers["content-type"]: eq image/jpeg
+  res.headers["content-disposition"]: eq filename="image.jpg"
+}
+

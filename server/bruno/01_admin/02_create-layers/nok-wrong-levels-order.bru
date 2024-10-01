@@ -1,0 +1,49 @@
+meta {
+  name: NOK niveaux haut et bas dans le mauvais ordre
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{endpoint}}/admin/layers/nok-wrong-levels-order
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "title": "nok-wrong-levels-order",
+    "abstract": "nok-wrong-levels-order",
+    "keywords": ["nok-wrong-levels-order"],
+    "pyramids": [
+      {
+        "path": "s3://pyramids/BDORTHO.json",
+        "top_level": "12",
+        "bottom_level": "5"
+      }
+    ],
+    "wms": {
+      "enabled": true
+    },
+    "wmts": {
+      "enabled": true
+    },
+    "tms": {
+      "enabled": true
+    },
+    "tiles": {
+      "enabled": true
+    },
+    "styles": [
+      "normal"
+    ]
+  }
+}
+
+assert {
+  res.status: eq 400
+  res.headers["content-type"]: eq application/json
+  res.body: isJson
+  res.body.error_status: eq Configuration issue
+  res.body.error_message: eq Pyramid to broadcast cannot be loaded
+}

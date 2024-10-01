@@ -1,0 +1,17 @@
+meta {
+  name: NOK sans TEMPLATE
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{endpoint}}/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetMap&BBOX=14.37083397340628999,-61.24877929687448841,14.92355439904350156,-60.76538085937448841&WIDTH=641&HEIGHT=733&LAYERS=OI.OrthoimageCoverage&STYLES=inspire_common:DEFAULT&FORMAT=image/png
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 400
+  res.headers["content-type"]: eq text/xml
+  res.body: contains code="MissingParameterValue"
+}

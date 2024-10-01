@@ -1,0 +1,17 @@
+meta {
+  name: NOK avec REQUEST erroné
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{endpoint}}/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=toto
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 400
+  res.headers["content-type"]: eq text/xml
+  res.body: contains code="OperationNotSupported"
+}

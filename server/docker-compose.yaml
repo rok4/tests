@@ -10,6 +10,10 @@ services:
       - ROK4_S3_SECRETKEY=rok4S3storage
       - ROK4_S3_KEY=rok4
       - ROK4_S3_URL=http://storage:9000
+    volumes:
+      - ./configurations/server.json:/configurations/server.json
+      - ./configurations/services.json:/configurations/services.json
+      - ./configurations/equals_crs.json:/configurations/equals_crs.json
     depends_on:
       - storage
 
@@ -22,10 +26,17 @@ services:
     depends_on:
       - middle
 
-  tests:
-    build: .
-    image: rok4/server-tests
+  client:
+    image: alpine/bruno:1.26.2
+    links:
+      - front
+    volumes:
+      - ./bruno:/apps
+      - ./results:/output
+    working_dir: /apps
     depends_on:
       - front
+    command: run -r --output /output/results.json --format json --bail --env-var "endpoint=http://front"
+    
 
 

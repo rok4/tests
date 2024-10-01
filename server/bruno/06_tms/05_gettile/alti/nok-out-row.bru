@@ -1,0 +1,17 @@
+meta {
+  name: NOK ligne hors limite
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{endpoint}}/tms/1.0.0/alti/13/2705/37600.zbil
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 404
+  res.headers["content-type"]: eq text/xml
+  res.body: contains No data found
+}

@@ -1,0 +1,19 @@
+meta {
+  name: NOK couche inconnue
+  type: http
+  seq: 2
+}
+
+delete {
+  url: {{endpoint}}/admin/layers/toto
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 404
+  res.headers["content-type"]: eq application/json
+  res.body: isJson
+  res.body.error_status: eq Not found
+  res.body.error_message: eq Layer toto does not exists.
+}

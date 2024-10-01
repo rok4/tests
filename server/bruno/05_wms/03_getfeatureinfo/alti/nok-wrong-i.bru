@@ -1,0 +1,18 @@
+meta {
+  name: NOK avec I erroné
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{endpoint}}/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&BBOX=659096.62154377030674368,1570803.00368478498421609,763341.54741703195031732,1655581.08999254484660923&CRS=EPSG:4559&WIDTH=1071&HEIGHT=871&LAYERS=alti&STYLES=hypso&FORMAT=image/png&QUERY_LAYERS=alti&INFO_FORMAT=text/html&I=toto&J=274&FEATURE_COUNT=10
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 400
+  res.headers["content-type"]: eq text/xml
+  res.body: contains code="InvalidPoint"
+  res.body: contains "I query parameter have to be a positive integer"
+}

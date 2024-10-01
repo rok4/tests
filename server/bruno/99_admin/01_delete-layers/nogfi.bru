@@ -1,0 +1,15 @@
+meta {
+  name: Suppression de la couche 'nogfi'
+  type: http
+  seq: 6
+}
+
+delete {
+  url: {{endpoint}}/admin/layers/nogfi
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 204
+}

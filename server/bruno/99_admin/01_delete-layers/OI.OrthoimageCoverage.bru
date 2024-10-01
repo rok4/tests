@@ -1,0 +1,15 @@
+meta {
+  name: Suppression de la couche 'OI.OrthoimageCoverage'
+  type: http
+  seq: 6
+}
+
+delete {
+  url: {{endpoint}}/admin/layers/OI.OrthoimageCoverage
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 204
+}

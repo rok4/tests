@@ -1,0 +1,16 @@
+meta {
+  name: OK
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{endpoint}}/tiles/collections/nogfi/styles/normal/map/tiles/PM/13/3760/2705?f=jpg
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 200
+  res.headers["content-type"]: eq image/jpeg
+}

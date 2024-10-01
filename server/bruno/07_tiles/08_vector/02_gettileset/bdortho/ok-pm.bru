@@ -1,0 +1,27 @@
+meta {
+  name: OK (PM)
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{endpoint}}/tiles/collections/bdortho/styles/normal/map/tiles/PM?f=json
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 200
+  res.headers["content-type"]: eq application/json
+  res.body: isJson
+  res.body.links: isArray
+  res.body.tileMatrixSetLimits: isArray
+  res.body.tileMatrixSetLimits: length 16
+  res.body.tileMatrixSetLimits[0].tileMatrix: isString
+  res.body.tileMatrixSetLimits[0].maxTileCol: isNumber
+  res.body.tileMatrixSetLimits[0].maxTileRow: isNumber
+  res.body.tileMatrixSetLimits[0].minTileCol: isNumber
+  res.body.tileMatrixSetLimits[0].minTileRow: isNumber
+  res.body.tileMatrixSetURI: isString
+}
+

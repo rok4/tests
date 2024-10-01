@@ -1,0 +1,20 @@
+meta {
+  name: NOK mauvaise route pour les tuiles raster
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{endpoint}}/tiles/collections/OI.OrthoimageCoverage/tiles/PM_0_15/13/3760/2705?f=jpg
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 400
+  res.headers["content-type"]: eq application/json
+  res.body: isJson
+  res.body.type: eq InvalidParameter
+  res.body.title: eq "Raster dataset have to be requested with map tiles request"
+  res.body.status: eq 400
+}

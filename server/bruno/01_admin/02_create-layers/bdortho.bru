@@ -1,0 +1,54 @@
+meta {
+  name: Création de la couche 'bdortho'
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{endpoint}}/admin/layers/bdortho
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "title": "bdortho",
+    "abstract": "bdortho",
+    "keywords": ["bdortho"],
+    "pyramids": [
+      {
+        "path": "s3://pyramids/BDORTHO.json",
+        "top_level": "0",
+        "bottom_level": "15"
+      }
+    ],
+    "extra_tilematrixsets": [
+      "4326"
+    ],
+    "wms": {
+      "enabled": true
+    },
+    "wmts": {
+      "enabled": true
+    },
+    "tms": {
+      "enabled": true
+    },
+    "tiles": {
+      "enabled": true
+    },
+    "styles": [
+      "normal"
+    ],
+    "get_feature_info": {
+      "type": "EXTERNALWMS",
+      "url": "{{endpoint}}/wms",
+      "layers": "alti",
+      "query_layers": "alti"
+    }
+  }
+}
+
+assert {
+  res.status: eq 204
+}

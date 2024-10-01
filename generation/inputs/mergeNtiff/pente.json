@@ -20,7 +20,7 @@
         "slope_max": 90
     },
     "palette": {
-        "max_value": 91,
+        "no_alpha": false,
         "rgb_continuous": true,
         "alpha_continuous": true,
         "colours": [

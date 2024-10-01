@@ -1,0 +1,21 @@
+meta {
+  name: NOK colonne hors limites
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{endpoint}}/tiles/collections/bdparcellaire/styles/orange/map/tiles/PM/16/30066/216590?f=png
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 404
+  res.headers["content-type"]: eq application/json
+  res.body: isJson
+  res.body.type: eq ResourceNotFound
+  res.body.title: eq Tile's indices out of limits
+  res.body.status: eq 404
+}
+

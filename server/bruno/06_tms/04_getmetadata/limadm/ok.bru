@@ -1,0 +1,30 @@
+meta {
+  name: OK
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{endpoint}}/tms/1.0.0/limadm/metadata.json
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 200
+  res.headers["content-type"]: eq application/json
+  res.body: isJson
+  res.body.minzoom: eq 10
+  res.body.maxzoom: eq 18
+  res.body.tiles: isArray
+  res.body.tiles[0]: contains /tms/1.0.0/limadm/{z}/{x}/{y}.pbf
+  res.body.vector_layers: isArray
+  res.body.vector_layers[0]: isJson
+  res.body.vector_layers[0].fields: isJson
+  res.body.vector_layers[0].fieldsCount: eq 12
+  res.body.vector_layers[0].geometry: isString
+  res.body.vector_layers[0].id: isString
+  res.body.vector_layers[0].minzoom: eq 10
+  res.body.vector_layers[0].maxzoom: eq 18
+
+}

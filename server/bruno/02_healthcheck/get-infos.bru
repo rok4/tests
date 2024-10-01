@@ -1,0 +1,23 @@
+meta {
+  name: Récupère les informations de contenu
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{endpoint}}/healthcheck/info
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 200
+  res.headers["content-type"]: eq application/json
+  res.body: isJson
+  res.body.layers: isArray 
+  res.body.layers: length 7
+  res.body.styles: isArray 
+  res.body.styles: length 6
+  res.body.tms: isArray 
+  res.body.tms: length 2
+}

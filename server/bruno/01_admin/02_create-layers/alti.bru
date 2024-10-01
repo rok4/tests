@@ -1,0 +1,48 @@
+meta {
+  name: Création de la couche 'alti'
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{endpoint}}/admin/layers/alti
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "title": "alti",
+    "abstract": "alti",
+    "keywords": ["alti"],
+    "pyramids": [
+      {
+        "top_level": "0",
+        "path": "s3://pyramids/ALTI.json",
+        "bottom_level": "13"
+      }
+    ],
+    "extra_crs": ["EPSG:4559","EPSG:4326","TOTO:1234"],
+    "wms": {
+      "enabled": true
+    },
+    "wmts": {
+      "enabled": true
+    },
+    "tms": {
+      "enabled": true
+    },
+    "tiles": {
+      "enabled": false
+    },
+    "styles": ["normal", "hypso"],
+    "resampling": "nn",
+    "get_feature_info": {
+      "type": "PYRAMID"
+    }
+  }
+}
+
+assert {
+  res.status: eq 204
+}
