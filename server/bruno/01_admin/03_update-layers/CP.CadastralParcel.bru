@@ -1,11 +1,11 @@
 meta {
-  name: NOK couche inconnue
+  name: Mise à jour de la couche 'bdortho'
   type: http
   seq: 2
 }
 
 put {
-  url: {{endpoint}}/admin/layers/toto
+  url: {{endpoint}}/admin/layers/CP.CadastralParcel
   body: json
   auth: none
 }
@@ -17,7 +17,7 @@ body:json {
     "keywords": ["CP.CadastralParcel"],
     "pyramids": [
       {
-        "path": "s3://pyramids/BDORTHO.json",
+        "path": "s3://pyramids/BDPARCELLAIRE.json",
         "top_level": "0",
         "bottom_level": "15"
       }
@@ -52,9 +52,9 @@ body:json {
 }
 
 assert {
-  res.status: eq 404
-  res.headers["content-type"]: eq application/json
-  res.body: isJson
-  res.body.error_status: eq Not found
-  res.body.error_message: eq Layer toto does not exists.
+  res.status: eq 204
+}
+
+docs {
+  Mise en conformité Inspire : ajout d'une métadonnée et style Inspire par défaut
 }

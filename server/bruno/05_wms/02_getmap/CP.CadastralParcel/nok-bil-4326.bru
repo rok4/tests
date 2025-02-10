@@ -1,0 +1,18 @@
+meta {
+  name: NOK (4326 + BIL)
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{endpoint}}/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetMap&BBOX=14.37083397340628999,-61.24877929687448841,14.92355439904350156,-60.76538085937448841&CRS=EPSG:4326&WIDTH=641&HEIGHT=733&LAYERS=CP.CadastralParcel&STYLES=inspire_common:DEFAULT&FORMAT=image/x-bil;bits=32
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 400
+  res.headers["content-type"]: eq text/xml
+  res.body: contains code="InvalidParameterValue"
+  res.body: contains not consistent
+}

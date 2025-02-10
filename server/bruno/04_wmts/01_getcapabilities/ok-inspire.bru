@@ -13,7 +13,7 @@ get {
 assert {
   res.status: eq 200
   res.headers["content-type"]: eq text/xml
-  res.body: contains <ows:Identifier>OI.OrthoimageCoverage</ows:Identifier>
+  res.body: contains <ows:Identifier>CP.CadastralParcel</ows:Identifier>
   res.body: notContains <ows:Identifier>bdortho</ows:Identifier>
   res.body: notContains <ows:Identifier>bdparcellaire</ows:Identifier>
   res.body: notContains <ows:Identifier>pente</ows:Identifier>

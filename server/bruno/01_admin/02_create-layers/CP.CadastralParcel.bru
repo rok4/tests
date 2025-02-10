@@ -1,11 +1,11 @@
 meta {
-  name: NOK couche inconnue
+  name: Création de la couche 'CP.CadastralParcel'
   type: http
-  seq: 2
+  seq: 1
 }
 
-put {
-  url: {{endpoint}}/admin/layers/toto
+post {
+  url: {{endpoint}}/admin/layers/CP.CadastralParcel
   body: json
   auth: none
 }
@@ -17,7 +17,7 @@ body:json {
     "keywords": ["CP.CadastralParcel"],
     "pyramids": [
       {
-        "path": "s3://pyramids/BDORTHO.json",
+        "path": "s3://pyramids/BDPARCELLAIRE.json",
         "top_level": "0",
         "bottom_level": "15"
       }
@@ -36,14 +36,7 @@ body:json {
       "enabled": true
     },
     "styles": [
-      "inspire"
-    ],
-    "metadata": [
-      {
-          "url": "http://metadata.ign.fr/CP.CadastralParcel.xml",
-          "type": "ISO19115:2003",
-          "format": "application/xml"
-      }
+      "normal"
     ],
     "get_feature_info": {
       "type": "PYRAMID"
@@ -52,9 +45,5 @@ body:json {
 }
 
 assert {
-  res.status: eq 404
-  res.headers["content-type"]: eq application/json
-  res.body: isJson
-  res.body.error_status: eq Not found
-  res.body.error_message: eq Layer toto does not exists.
+  res.status: eq 204
 }

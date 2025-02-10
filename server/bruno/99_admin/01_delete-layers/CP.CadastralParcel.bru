@@ -1,0 +1,15 @@
+meta {
+  name: Suppression de la couche 'CP.CadastralParcel'
+  type: http
+  seq: 6
+}
+
+delete {
+  url: {{endpoint}}/admin/layers/CP.CadastralParcel
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 204
+}
