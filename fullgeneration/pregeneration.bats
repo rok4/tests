@@ -48,14 +48,3 @@ setup_file() {
     bats_require_minimum_version 1.5.0
     run -0 be4.pl --conf /confs/be4-scan1000.json
 }
-
-teardown_file() {
-    touch /common/pregeneration.ok
-
-    until ls /common/generation.ok; do
-        echo "Attente de la fin de l'étape de génération" >&3
-        sleep 10
-    done
-
-    rm /common/generation.ok
-}

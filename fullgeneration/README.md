@@ -1,15 +1,14 @@
 # Tests fonctionnels des génération complètes (PREGENERATION + GENERATION)
 
-## Compilation des images de test
+## Compilation de l'image de test
 
-`docker-compose build --build-arg GENERATION_TAG=<VERSION> --build-arg PREGENERATION_TAG=<VERSION>`
+`docker-compose build --build-arg FULLGENERATION_TAG=<VERSION>`
 
 
 ## Architecture de tests
 
 * Serveur PostgreSQL / PostGIS
-* 1 conteneur de test `pregeneration` (PREGENERATION + BATS)
-* 1 conteneur de test `generation` (GENERATION + BATS)
+* 1 conteneur de test `fullgeneration` (PREGENERATION + GENERATION + BATS)
 
 ## Contenu des tests
 
@@ -33,5 +32,5 @@ Le statut de la commande est alors celui du conteneur de test. 0 si tous les tes
 
 ```
 docker-compose down
-docker volume rm pregeneration-generation_common pregeneration-generation_scripts pregeneration-generation_pyramids
+docker volume rm fullgeneration_common fullgeneration_scripts fullgeneration_pyramids
 ```

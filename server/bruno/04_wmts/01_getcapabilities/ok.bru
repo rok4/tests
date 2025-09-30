@@ -19,5 +19,6 @@ assert {
   res.body: notContains <ows:Identifier>pente</ows:Identifier>
   res.body: contains <ows:Identifier>alti</ows:Identifier>
   res.body: contains <ows:Identifier>CP.CadastralParcel</ows:Identifier>
+  res.body: contains <ows:Metadata xlink:href="http://metadata.ign.fr/CP.CadastralParcel.xml"/>
   res.body: notContains <ows:Identifier>limadm</ows:Identifier>
 }

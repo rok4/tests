@@ -14,3 +14,12 @@ assert {
   res.status: eq 200
   res.headers["content-type"]: eq image/x-bil;bits=32
 }
+
+script:post-response {
+  const chai = require('chai');
+  const { expect } = chai;
+  
+  ind = res.res.request.res.rawHeaders.indexOf("Content-Encoding");
+  expect(ind).not.to.equal(-1);
+  expect(res.res.request.res.rawHeaders[ind+1]).to.equal("deflate");
+}

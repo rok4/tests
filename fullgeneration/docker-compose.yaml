@@ -12,21 +12,11 @@ services:
       - POSTGRES_USER=ign
       - POSTGRES_PASSWORD=ign
 
-  pregeneration:
+  fullgeneration:
     build: 
       context: .
-      dockerfile: pregeneration.Dockerfile
-    image: rok4/pregeneration-tests
-    volumes:
-      - common:/common
-      - scripts:/scripts
-      - pyramids:/pyramids
-
-  generation:
-    build: 
-      context: .
-      dockerfile: generation.Dockerfile
-    image: rok4/generation-tests
+      dockerfile: fullgeneration.Dockerfile
+    image: rok4/fullgeneration-tests
     volumes:
       - common:/common
       - scripts:/scripts

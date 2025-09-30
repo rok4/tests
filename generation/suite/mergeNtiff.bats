@@ -31,7 +31,7 @@ setup_file() {
 
 @test "Succeed to reproject images and apply a style" {
     bats_require_minimum_version 1.5.0
-    run -0 mergeNtiff -f /inputs/mergeNtiff/conf_style.txt -p /inputs/mergeNtiff/pente.json -c zip -i lanczos -n -99999
+    run -0 mergeNtiff -f /inputs/mergeNtiff/conf_style.txt -p /inputs/mergeNtiff/pente.json -c zip -i lanczos -n -255,0,0,100
 }
 
 teardown_file() {

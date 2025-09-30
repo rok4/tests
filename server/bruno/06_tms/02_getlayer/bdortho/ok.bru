@@ -15,4 +15,5 @@ assert {
   res.headers["content-type"]: eq text/xml
   res.body: contains <Title>bdortho</Title>
   res.body: contains <TileFormat width="256" height="256" mime-type="image/jpeg" extension="jpeg"/>
+  res.body: contains <Attribution href="url"><Title>titre</Title><Logo width="100" height="100" href="logo_url" mime-type="image/png"/></Attribution>
 }

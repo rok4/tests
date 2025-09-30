@@ -14,6 +14,7 @@ assert {
   res.status: eq 200
   res.headers["content-type"]: eq text/xml
   res.body: contains <Name>bdortho</Name>
+  res.body: contains <Attribution><Title>titre</Title><OnlineResource xlink:href="url" xlink:type="simple"/><LogoURL width="100" height="100"><Format>image/png</Format><OnlineResource xlink:href="logo_url" xlink:type="simple"/></LogoURL></Attribution>
   res.body: contains <Name>bdparcellaire</Name>
   res.body: contains <Name>pente</Name>
   res.body: contains <Name>alti</Name>

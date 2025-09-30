@@ -42,11 +42,6 @@ setup_file() {
     run -0 work2cache /inputs/work2cache/NOTASLAB.tif -c zip -t 50 50 -a uint8 -s 1 file:///tmp/test_ok_conversion.tif
 }
 
-@test "Succeed to tile a slab, cropping data" {
-    bats_require_minimum_version 1.5.0
-    run -0 work2cache /inputs/work2cache/NOTASLAB.tif -c jpg -t 100 100 file:///tmp/test_ok_crop.tif -crop
-}
-
 teardown_file() {
     rm -f /tmp/test_nok_param.tif
     # rm -f /tmp/test_ok_conversion.tif

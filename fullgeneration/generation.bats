@@ -8,12 +8,6 @@ setup_file() {
     DIR="$( cd "$( dirname "$BATS_TEST_FILENAME" )" >/dev/null 2>&1 && pwd )"
     PATH="$DIR:$PATH"
 
-    until ls /common/pregeneration.ok; do
-        echo "Attente de la fin de l'étape de prégénération" >&3
-        sleep 10
-    done
-
-    rm /common/pregeneration.ok
     echo "Testing GENERATION" >&3
 }
 
@@ -57,8 +51,4 @@ setup_file() {
     bats_require_minimum_version 1.5.0
     run -0 bash /scripts/SCAN1000/main.sh 1
     find /pyramids/SCAN1000/ -type f | wc -l >&3
-}
-
-teardown_file() {
-    touch /common/generation.ok
 }
