@@ -34,6 +34,8 @@ setup_file() {
     run -0 work2cache /inputs/work2cache/uint8/tiff_striped_palette.tif -c zip -t 50 50 file:///tmp/SLAB_RGB_UINT8_4.tif
     run -0 work2cache /inputs/work2cache/uint8/tiff_striped_rgba.tif -c zip -t 50 50 file:///tmp/SLAB_RGBA_UINT8_1.tif
     run -0 work2cache /inputs/work2cache/uint8/tiff_tiled_rgba.tif -c zip -t 50 50 file:///tmp/SLAB_RGBA_UINT8_2.tif
+    run -0 work2cache /inputs/work2cache/uint8/tiff_striped_rgb_jpeg.tif -c zip -t 50 50 file:///tmp/SLAB_RGB_UINT8_5.tif
+    run -0 work2cache /inputs/work2cache/uint8/tiff_tiled_rgb_jpeg.tif -c zip -t 50 50 file:///tmp/SLAB_RGB_UINT8_6.tif
 }
 
 
@@ -44,6 +46,5 @@ setup_file() {
 
 teardown_file() {
     rm -f /tmp/test_nok_param.tif
-    # rm -f /tmp/test_ok_conversion.tif
-    # rm -f /tmp/test_ok_crop.tif
+    rm -f /tmp/test_ok_conversion.tif
 }
