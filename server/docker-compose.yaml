@@ -36,7 +36,7 @@ services:
     working_dir: /apps
     depends_on:
       - front
-    command: run -r --output /output/results.json --format json --bail --env-var "endpoint=http://front"
+    command: run -r --output /output/results.json --format json --env-var "endpoint=http://front"
     
 
 
