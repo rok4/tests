@@ -13,5 +13,5 @@ get {
 assert {
   res.status: eq 400
   res.headers["content-type"]: eq text/xml
-  res.body: contains exceptionCode="InvalidParameterValue"
+  res.body: contains exceptionCode="VersionNegotiationFailed"
 }

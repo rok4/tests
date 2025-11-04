@@ -1,5 +1,5 @@
 meta {
-  name: OK 2 couches (3857 + JPEG)
+  name: NOK 2 couches (3857 + JPEG)
   type: http
   seq: 1
 }
@@ -11,6 +11,8 @@ get {
 }
 
 assert {
-  res.status: eq 200
-  res.headers["content-type"]: eq image/jpeg
+  res.status: eq 400
+  res.headers["content-type"]: eq text/xml
+  res.body: contains code="InvalidParameterValue"
+  res.body: contains not consistent
 }
