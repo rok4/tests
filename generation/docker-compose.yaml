@@ -2,5 +2,4 @@ version: "3"
 services:
 
   tests:
-    build: .
     image: rok4/generation-tests

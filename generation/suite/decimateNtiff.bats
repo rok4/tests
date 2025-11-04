@@ -11,22 +11,22 @@ setup_file() {
 
 @test "Fail because of not compatible input images" {
     bats_require_minimum_version 1.5.0
-    run -255 decimateNtiff -f /inputs/decimateNtiff/nok/conf.txt -n 255,0,0 -c zip
+    run -255 decimateNtiff -f ../inputs/decimateNtiff/nok/conf.txt -n 255,0,0 -c zip
 }
 
 @test "Fail because of wrong nodata colour (not enough value)" {
     bats_require_minimum_version 1.5.0
-    run -255 decimateNtiff -f /inputs/decimateNtiff/ok/conf.txt -n 255,0 -c zip
+    run -255 decimateNtiff -f ../inputs/decimateNtiff/ok/conf.txt -n 255,0 -c zip
 }
 
 @test "Succeed to decimate image" {
     bats_require_minimum_version 1.5.0
-    run -0 decimateNtiff -f /inputs/decimateNtiff/ok/conf_bg.txt -n 255,0,0 -c zip
+    run -0 decimateNtiff -f ../inputs/decimateNtiff/ok/conf_bg.txt -n 255,0,0 -c zip
 }
 
 @test "Succeed to decimate image with conversion" {
     bats_require_minimum_version 1.5.0
-    run -0 decimateNtiff -f /inputs/decimateNtiff/ok/conf.txt -n 255 -c zip -a uint8 -s 1
+    run -0 decimateNtiff -f ../inputs/decimateNtiff/ok/conf.txt -n 255 -c zip -a uint8 -s 1
 }
 
 teardown_file() {

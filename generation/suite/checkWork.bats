@@ -11,5 +11,5 @@ setup_file() {
 
 @test "Valid image" {
     bats_require_minimum_version 1.5.0
-    run -0 checkWork /inputs/checkWork/SOURCE.tif
+    run -0 checkWork ../inputs/checkWork/SOURCE.tif
 }

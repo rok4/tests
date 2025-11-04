@@ -11,27 +11,27 @@ setup_file() {
 
 @test "Fail because of wrong input" {
     bats_require_minimum_version 1.5.0
-    run -255 mergeNtiff -f /inputs/mergeNtiff/conf_nok_/inputs.txt -c zip -i lanczos -n 0,0,255
+    run -255 mergeNtiff -f ../inputs/mergeNtiff/conf_nok_/inputs.txt -c zip -i lanczos -n 0,0,255
 }
 
 @test "Succeed to reproject images into 4326" {
     bats_require_minimum_version 1.5.0
-    run -0 mergeNtiff -f /inputs/mergeNtiff/conf_4326.txt -r /inputs/mergeNtiff/ -c zip -i lanczos -n 255,0 -a uint8 -s 2
+    run -0 mergeNtiff -f ../inputs/mergeNtiff/conf_4326.txt -r ../inputs/mergeNtiff/ -c zip -i lanczos -n 255,0 -a uint8 -s 2
 }
 
 @test "Succeed to reproject and convert input images" {
     bats_require_minimum_version 1.5.0
-    run -0 mergeNtiff -f /inputs/mergeNtiff/conf_conversion.txt -c zip -i lanczos -n 255,255,255,0 -a uint8 -s 4
+    run -0 mergeNtiff -f ../inputs/mergeNtiff/conf_conversion.txt -c zip -i lanczos -n 255,255,255,0 -a uint8 -s 4
 }
 
 @test "Succeed to reproject images using an input mask" {
     bats_require_minimum_version 1.5.0
-    run -0 mergeNtiff -f /inputs/mergeNtiff/conf_mask.txt -r /inputs/mergeNtiff/ -c zip -i lanczos -n 0,0,255
+    run -0 mergeNtiff -f ../inputs/mergeNtiff/conf_mask.txt -r ../inputs/mergeNtiff/ -c zip -i lanczos -n 0,0,255
 }
 
 @test "Succeed to reproject images and apply a style" {
     bats_require_minimum_version 1.5.0
-    run -0 mergeNtiff -f /inputs/mergeNtiff/conf_style.txt -p /inputs/mergeNtiff/pente.json -c zip -i lanczos -n -255,0,0,100
+    run -0 mergeNtiff -f ../inputs/mergeNtiff/conf_style.txt -p ../inputs/mergeNtiff/pente.json -c zip -i lanczos -n -255,0,0,100
 }
 
 teardown_file() {
