@@ -1,0 +1,18 @@
+{
+    "identifier": "terrainrgb",
+    "title": "Aspect",
+    "abstract": "Calcul de l'altitude en Terrain RGB",
+    "keywords": ["MNT"],
+    "legend": {
+        "format": "image/png",
+        "url": "http://ign.fr",
+        "height": 100,
+        "width": 100,
+        "min_scale_denominator": 0,
+        "max_scale_denominator": 30
+    },
+    "terrainrgb": {
+        "min_elevation": -10000,
+        "step": 0.1
+    }
+}

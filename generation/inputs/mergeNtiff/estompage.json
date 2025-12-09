@@ -1,0 +1,20 @@
+{
+    "identifier": "estompage",
+    "title": "Estompage",
+    "abstract": "Estompage Azimuth 315°",
+    "keywords": ["MNT"],
+    "legend": {
+        "format": "image/png",
+        "url": "http://ign.fr",
+        "height": 100,
+        "width": 100,
+        "min_scale_denominator": 0,
+        "max_scale_denominator": 30
+    },
+    "estompage": {
+        "zenith": 45,
+        "azimuth": 315,
+        "z_factor": 1,
+        "interpolation": "linear"
+    }
+}
