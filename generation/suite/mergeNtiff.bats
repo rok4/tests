@@ -64,6 +64,11 @@ setup_file() {
     run -0 mergeNtiff -f ../inputs/mergeNtiff/conf_style.txt -p ../inputs/mergeNtiff/terrainrgb.json -c zip -i lanczos -n -255,0,0,100
 }
 
+@test "Fail because of terrainrgb and palette not compatibles " {
+    bats_require_minimum_version 1.5.0
+    run -255 mergeNtiff -f ../inputs/mergeNtiff/conf_style.txt -p ../inputs/mergeNtiff/terrainrgb_with_palette.json -c zip -i lanczos -n -255,0,0,100
+}
+
 teardown_file() {
     rm -f /tmp/test_ok_style.tif
     rm -f /tmp/test_ok_mask_i.tif
