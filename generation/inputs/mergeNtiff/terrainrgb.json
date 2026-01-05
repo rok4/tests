@@ -1,6 +1,6 @@
 {
     "identifier": "terrainrgb",
-    "title": "Aspect",
+    "title": "Terrain RGB",
     "abstract": "Calcul de l'altitude en Terrain RGB",
     "keywords": ["MNT"],
     "legend": {
