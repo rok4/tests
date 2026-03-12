@@ -29,9 +29,44 @@ setup_file() {
     run -0 mergeNtiff -f ../inputs/mergeNtiff/conf_mask.txt -r ../inputs/mergeNtiff/ -c zip -i lanczos -n 0,0,255
 }
 
-@test "Succeed to reproject images and apply a style" {
+@test "Succeed to reproject images and apply a slope style with a palette" {
+    bats_require_minimum_version 1.5.0
+    run -0 mergeNtiff -f ../inputs/mergeNtiff/conf_style.txt -p ../inputs/mergeNtiff/pente_with_palette.json -c zip -i lanczos -n -255,0,0,100
+}
+
+@test "Succeed to reproject images and apply a slope style without a palette" {
     bats_require_minimum_version 1.5.0
     run -0 mergeNtiff -f ../inputs/mergeNtiff/conf_style.txt -p ../inputs/mergeNtiff/pente.json -c zip -i lanczos -n -255,0,0,100
+}
+
+@test "Succeed to reproject images and apply a estompage style with a palette" {
+    bats_require_minimum_version 1.5.0
+    run -0 mergeNtiff -f ../inputs/mergeNtiff/conf_style.txt -p ../inputs/mergeNtiff/estompage_with_palette.json -c zip -i lanczos -n -255,0,0,100
+}
+
+@test "Succeed to reproject images and apply a estompage style without a palette" {
+    bats_require_minimum_version 1.5.0
+    run -0 mergeNtiff -f ../inputs/mergeNtiff/conf_style.txt -p ../inputs/mergeNtiff/estompage.json -c zip -i lanczos -n -255,0,0,100
+}
+
+@test "Succeed to reproject images and apply a aspect style with a palette" {
+    bats_require_minimum_version 1.5.0
+    run -0 mergeNtiff -f ../inputs/mergeNtiff/conf_style.txt -p ../inputs/mergeNtiff/aspect_with_palette.json -c zip -i lanczos -n -255,0,0,100
+}
+
+@test "Succeed to reproject images and apply a aspect style without a palette" {
+    bats_require_minimum_version 1.5.0
+    run -0 mergeNtiff -f ../inputs/mergeNtiff/conf_style.txt -p ../inputs/mergeNtiff/aspect.json -c zip -i lanczos -n -255,0,0,100
+}
+
+@test "Succeed to reproject images and apply a terrainrgb style " {
+    bats_require_minimum_version 1.5.0
+    run -0 mergeNtiff -f ../inputs/mergeNtiff/conf_style.txt -p ../inputs/mergeNtiff/terrainrgb.json -c zip -i lanczos -n -255,0,0,100
+}
+
+@test "Fail because of terrainrgb and palette not compatibles " {
+    bats_require_minimum_version 1.5.0
+    run -255 mergeNtiff -f ../inputs/mergeNtiff/conf_style.txt -p ../inputs/mergeNtiff/terrainrgb_with_palette.json -c zip -i lanczos -n -255,0,0,100
 }
 
 teardown_file() {

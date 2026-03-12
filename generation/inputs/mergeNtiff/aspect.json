@@ -1,0 +1,18 @@
+{
+	"identifier": "aspect",
+    "title": "Aspect",
+	"abstract": "Calcul de l'exposition par la méthode de Horn",
+	"keywords": ["MNT"],
+    "legend": {
+        "format": "image/png",
+        "url": "http://ign.fr",
+        "height": 100,
+        "width": 100,
+        "min_scale_denominator": 0,
+        "max_scale_denominator": 30
+    },
+    "exposition": {
+        "algo": "H",
+        "min_slope": 1
+    }
+}
