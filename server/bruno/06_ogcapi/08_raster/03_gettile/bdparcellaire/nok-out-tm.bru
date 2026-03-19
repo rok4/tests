@@ -1,0 +1,21 @@
+meta {
+  name: NOK niveau hors limites
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{endpoint}}/ogcapi/collections/bdparcellaire/styles/orange/map/tiles/PM_0_18/19/30066/21659?f=png
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 404
+  res.headers["content-type"]: eq application/json
+  res.body: isJson
+  res.body.type: eq ResourceNotFound
+  res.body.title: eq Level out of limits
+  res.body.status: eq 404
+}
+

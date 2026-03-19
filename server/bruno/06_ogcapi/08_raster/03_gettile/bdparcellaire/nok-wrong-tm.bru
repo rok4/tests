@@ -1,0 +1,21 @@
+meta {
+  name: NOK TM erroné
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{endpoint}}/ogcapi/collections/bdparcellaire/styles/orange/map/tiles/PM_0_18/toto/30066/21659?f=png
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 400
+  res.headers["content-type"]: eq application/json
+  res.body: isJson
+  res.body.type: eq InvalidParameter
+  res.body.title: eq Tile matrix toto unknown
+  res.body.status: eq 400
+}
+

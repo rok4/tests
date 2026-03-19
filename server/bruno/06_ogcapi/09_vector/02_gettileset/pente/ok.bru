@@ -1,0 +1,21 @@
+meta {
+  name: OK
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{endpoint}}/ogcapi/collections/pente/map/tiles/PM
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 200
+  res.headers["content-type"]: eq application/json
+  res.body: isJson
+  res.body.links: isArray
+  res.body.tileMatrixSetLimits: isArray
+  res.body.tileMatrixSetLimits: length 14
+  res.body.tileMatrixSetURI: isString
+}

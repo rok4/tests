@@ -1,0 +1,17 @@
+meta {
+  name: OK avec le nom de TMS natif
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{endpoint}}/ogcapi/collections/bdparcellaire/styles/orange/map/tiles/PM/16/30066/21659?f=png
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 200
+  res.headers["content-type"]: eq image/png
+}
+
