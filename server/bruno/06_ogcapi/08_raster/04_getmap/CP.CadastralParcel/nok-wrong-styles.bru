@@ -1,0 +1,18 @@
+meta {
+  name: NOK avec STYLES erroné
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{endpoint}}/ogcapi/collections/CP.CadastralParcel/styles/toto/map?bbox=14.37083397340628999,-61.24877929687448841,14.92355439904350156,-60.76538085937448841&crs=EPSG:4326&bbox-crs=EPSG:4326&width=641&height=733&f=png
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 400
+  res.headers["content-type"]: eq application/json
+  res.body.type: eq InvalidParameter
+}
+

@@ -45,7 +45,8 @@
     }
   },
   "admin": {
-    "enabled": true
+    "enabled": true,
+    "secret": "secret"
   },
   "health": {
     "enabled": true
@@ -119,6 +120,7 @@
       "format": "application/xml"
     },
     "tiles": true,
-    "maps": true
+    "maps": true,
+    "default_size": 128
   }
 }

@@ -10,6 +10,10 @@ get {
   auth: none
 }
 
+params:query {
+  f: mvt
+}
+
 assert {
   res.status: eq 400
   res.headers["content-type"]: eq application/json

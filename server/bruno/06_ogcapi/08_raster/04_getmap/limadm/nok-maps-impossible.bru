@@ -1,0 +1,18 @@
+meta {
+  name: NOK sur une couche vecteur en Maps
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{endpoint}}/ogcapi/collections/limadm/map
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 400
+  res.headers["content-type"]: eq application/json
+  res.body.type: eq "InvalidParameter"
+  res.body.title: contains "cannot be requested with OGC API Maps"
+}

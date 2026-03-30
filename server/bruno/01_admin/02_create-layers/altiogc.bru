@@ -1,0 +1,52 @@
+meta {
+  name: Création de la couche 'altiogc'
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{endpoint}}/admin/layers/altiogc
+  body: json
+  auth: none
+}
+
+headers {
+  X-Rok4-Secret: secret
+}
+
+body:json {
+  {
+    "title": "altiogc",
+    "abstract": "altiogc",
+    "keywords": ["altiogc"],
+    "pyramids": [
+      {
+        "top_level": "0",
+        "path": "s3://pyramids/ALTI.json",
+        "bottom_level": "13"
+      }
+    ],
+    "extra_crs": ["EPSG:4559","EPSG:4326","TOTO:1234"],
+    "wms": {
+      "enabled": false
+    },
+    "wmts": {
+      "enabled": false
+    },
+    "tms": {
+      "enabled": false
+    },
+    "ogcapi": {
+      "enabled": true
+    },
+    "styles": ["normal", "hypso", "terrainrgb"],
+    "resampling": "nn",
+    "get_feature_info": {
+      "type": "PYRAMID"
+    }
+  }
+}
+
+assert {
+  res.status: eq 204
+}

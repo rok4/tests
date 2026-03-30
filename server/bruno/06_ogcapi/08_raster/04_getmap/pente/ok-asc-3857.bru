@@ -1,0 +1,16 @@
+meta {
+  name: OK (3857 + ASC)
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{endpoint}}/ogcapi/collections/pente/styles/normal/map?bbox=-6818182.923037664965,1616796.022287987173,-6764371.25512490049,1680391.629821252078&crs=EPSG:3857&bbox-crs=EPSG:3857&width=691&height=815&f=asc
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 200
+  res.headers["content-type"]: eq text/asc
+}

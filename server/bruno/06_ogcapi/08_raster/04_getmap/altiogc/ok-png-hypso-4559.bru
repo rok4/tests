@@ -1,0 +1,16 @@
+meta {
+  name: OK (4559 + PNG + HYPSO)
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{endpoint}}/ogcapi/collections/altiogc/styles/hypso/map?bbox=668251.7252410495421,1572821.529549255269,754186.4437197528314,1653562.564128074329&crs=EPSG:4559&bbox-crs=EPSG:4559&width=883&height=831&f=png
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 200
+  res.headers["content-type"]: eq image/png
+}
