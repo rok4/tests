@@ -1,0 +1,19 @@
+{
+    "identifier": "white_to_alpha",
+    "title": "Blanc transparent",
+    "abstract": "Rend le blanc transparent",
+    "keywords": ["white", "alpha"],
+    "legend": {
+        "format": "image/png",
+        "url": "http://ign.fr",
+        "height": 100,
+        "width": 100,
+        "min_scale_denominator": 0,
+        "max_scale_denominator": 30
+    },
+    "colorize": {
+        "source": [255,255,255],
+        "destination": [255,255,255,0],
+        "tolerance": 2
+    }
+}

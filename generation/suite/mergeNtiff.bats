@@ -69,6 +69,11 @@ setup_file() {
     run -255 mergeNtiff -f ../inputs/mergeNtiff/conf_style.txt -p ../inputs/mergeNtiff/terrainrgb_with_palette.json -c zip -i lanczos -n -255,0,0,100
 }
 
+@test "Succeed to reproject images and apply a colorize style " {
+    bats_require_minimum_version 1.5.0
+    run -255 mergeNtiff -f ../inputs/mergeNtiff/conf_style.txt -p ../inputs/mergeNtiff/colorize.json -c zip -i lanczos -n -255,0,0,100
+}
+
 teardown_file() {
     rm -f /tmp/test_ok_style.tif
     rm -f /tmp/test_ok_mask_i.tif
