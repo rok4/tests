@@ -30,7 +30,7 @@ server {
 Dans ce dossier :
 
 * Lancer le minio de données avec `docker run -d --rm -v $PWD/data/:/backup -p 9000:9000 -p 9001:9001 --name minio rok4/dataset:minio`
-* Lancer le serveur : `ROK4_S3_SECRETKEY=rok4S3storage ROK4_S3_KEY=rok4 ROK4_S3_URL=http://localhost:9000 rok4 -f configurations/server.local.json`
+* Lancer le serveur : `ROK4_S3_SECRETKEY=rok4S3storage ROK4_S3_KEY=rok4 ROK4_S3_URL=http://localhost:9000 rok4 -f configurations/server.local.json`. Afin de valider l'absence de fuite mémoire, le serveur peut être lancé avec valgrind : `ROK4_S3_SECRETKEY=rok4S3storage ROK4_S3_KEY=rok4 ROK4_S3_URL=http://localhost:9000 valgrind rok4 -f configurations/server.local.json`
 
 Dans le dossier `bruno`, lancer la collection bruno avec `bru run -r --output ../results/local.json --format json --bail --env-var "endpoint=http://localhost/data"`
 

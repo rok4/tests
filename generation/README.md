@@ -28,7 +28,7 @@ git clone https://github.com/bats-core/bats-assert.git test_helper/bats-assert
 git clone https://github.com/bats-core/bats-file.git test_helper/bats-file
 ```
 
-* Lancer la commande `./bats/bin/bats -T --print-output-on-failure .`
+* Lancer la commande `./bats/bin/bats -T --pretty .`. Afin de valider l'absence de fuite mémoire, le jeu des tests peut être lancé avec valgrind (installé) : `VALGRIND_ANALYSIS=1 ./bats/bin/bats -T --pretty ./cache2work.bats`
 
 ## Jeu des tests sur l'image rok4/generation
 
